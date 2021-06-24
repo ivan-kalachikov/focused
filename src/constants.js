@@ -1,0 +1,5 @@
+const AIRPORT_URL_BASE = 'https://s1-bos.liveatc.net';
+const DEFAULT_AIRPORT_CODE = 'OVB';
+const DEFAULT_MUSIC_ID = 0;
+
+export { AIRPORT_URL_BASE, DEFAULT_AIRPORT_CODE, DEFAULT_MUSIC_ID };

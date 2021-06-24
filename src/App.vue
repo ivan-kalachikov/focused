@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="md-layout">
+    <MusicPlayer />
+    <!-- <SoundPlayer /> -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MusicPlayer from './components/MusicPlayer.vue';
+// import SoundPlayer from './components/SoundPlayer.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    MusicPlayer,
+    // SoundPlayer,
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #4d9dee;
   margin-top: 60px;
 }
 </style>

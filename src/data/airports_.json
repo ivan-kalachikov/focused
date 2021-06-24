@@ -1,0 +1,717 @@
+[
+    {
+        "groupName": "North America",
+        "airports": [
+            {
+                "urlPostfix": "phnl_2",
+                "name": "Honolulu",
+                "code": "HNL"
+            },
+            {
+                "urlPostfix": "kmem2_app",
+                "name": "Memphis",
+                "code": "MEM"
+            },
+            {
+                "urlPostfix": "ktme",
+                "name": "Houston",
+                "code": "IAH"
+            },
+            {
+                "urlPostfix": "klga_twr",
+                "name": "LaGuardia",
+                "code": "NYC"
+            },
+            {
+                "urlPostfix": "katl_twr",
+                "name": "Atlanta",
+                "code": "ATL"
+            },
+            {
+                "urlPostfix": "cyul_twr2",
+                "name": "Montreal",
+                "code": "YUL"
+            },
+            {
+                "urlPostfix": "kphx_app_s",
+                "name": "Phoenix",
+                "code": "PHX"
+            },
+            {
+                "urlPostfix": "kjfk_twr",
+                "name": "JFK Tower",
+                "code": "NYC"
+            },
+            {
+                "urlPostfix": "ksfo_twr",
+                "name": "San Fransisco Tower",
+                "code": "SFO"
+            },
+            {
+                "urlPostfix": "klax6",
+                "name": "Los Angeles",
+                "code": "KLAX"
+            },
+            {
+                "urlPostfix": "ktpa2",
+                "name": "Tampa",
+                "code": "TPA"
+            },
+            {
+                "urlPostfix": "kmso",
+                "name": "Missoula",
+                "code": "KMSO"
+            },
+            {
+                "urlPostfix": "kdtw2",
+                "name": "Detroit",
+                "code": "DTW"
+            },
+            {
+                "urlPostfix": "ksea_twr",
+                "name": "Seattle",
+                "code": "SEA"
+            },
+            {
+                "urlPostfix": "kokc_app_1242",
+                "name": "Oklahoma City",
+                "code": "OKC"
+            },
+            {
+                "urlPostfix": "mslp",
+                "name": "Monsenor Oscar, San Salvador",
+                "code": "SAL"
+            },
+            {
+                "urlPostfix": "mggt_gnd_twr",
+                "name": "La Aurora, Guatemala",
+                "code": "GUA"
+            },
+            {
+                "urlPostfix": "cymx",
+                "name": "Montreal-Mirabel",
+                "code": "YMX"
+            },
+            {
+                "urlPostfix": "kbos_twr",
+                "name": "Boston-Logan",
+                "code": "BOS"
+            },
+            {
+                "urlPostfix": "cyow3",
+                "name": "Ottawa",
+                "code": "YOW"
+            },
+            {
+                "urlPostfix": "cyqb2",
+                "name": "Quebec",
+                "code": "YQB"
+            },
+            {
+                "urlPostfix": "cyyz7",
+                "name": "Toronto",
+                "code": "YYZ"
+            },
+            {
+                "urlPostfix": "kiad1_3_4",
+                "name": "Washington",
+                "code": "IAD"
+            },
+            {
+                "urlPostfix": "kphl_final",
+                "name": "Philadelphia",
+                "code": "PHL"
+            },
+            {
+                "urlPostfix": "krdu_app2",
+                "name": "Durham",
+                "code": "RDU"
+            },
+            {
+                "urlPostfix": "kbuf_app",
+                "name": "Buffalo",
+                "code": "BUF"
+            },
+            {
+                "urlPostfix": "kclt2",
+                "name": "Charlotte",
+                "code": "CLT"
+            },
+            {
+                "urlPostfix": "kpit2",
+                "name": "Pittsburgh",
+                "code": "PIT"
+            },
+            {
+                "urlPostfix": "kslc_app",
+                "name": "Salt Lake City",
+                "code": "SLC"
+            },
+            {
+                "urlPostfix": "kdca3",
+                "name": "Washington",
+                "code": "DCA"
+            },
+            {
+                "urlPostfix": "kbwi_twr",
+                "name": "Baltimore",
+                "code": "BWI"
+            },
+            {
+                "urlPostfix": "kmci1_local",
+                "name": "Kansas City",
+                "code": "MCI"
+            },
+            {
+                "urlPostfix": "kric1",
+                "name": "Richmond",
+                "code": "RIC"
+            },
+            {
+                "urlPostfix": "kmvy",
+                "name": "Vineyard Haven",
+                "code": "MVY"
+            },
+            {
+                "urlPostfix": "kaus2",
+                "name": "Austin",
+                "code": "KAUS"
+            },
+            {
+                "urlPostfix": "ksan2",
+                "name": "San Diego",
+                "code": "SAN"
+            },
+            {
+                "urlPostfix": "kmia_twr",
+                "name": "Miami",
+                "code": "KMIA"
+            },
+            {
+                "urlPostfix": "kord7",
+                "name": "Chicago",
+                "code": "ORD"
+            },
+            {
+                "urlPostfix": "kdfw_twr_hp",
+                "name": "Dallas, Fort Worth",
+                "code": "DFW"
+            },
+            {
+                "urlPostfix": "kmsp_twr",
+                "name": "Minneapolis",
+                "code": "MSP"
+            },
+            {
+                "urlPostfix": "kcle1_2",
+                "name": "Cleveland-Hopkins",
+                "code": "CLE"
+            },
+            {
+                "urlPostfix": "cyhz_2",
+                "name": "Halifax",
+                "code": "YHZ"
+            },
+            {
+                "urlPostfix": "cyvr2",
+                "name": "Vancouver",
+                "code": "YVR"
+            },
+            {
+                "urlPostfix": "kpdx2",
+                "name": "Portland",
+                "code": "PDX"
+            },
+            {
+                "urlPostfix": "kind5",
+                "name": "Indianapolis",
+                "code": "IND"
+            },
+            {
+                "urlPostfix": "ksjc_del_gnd",
+                "name": "San Jose",
+                "code": "SJC"
+            },
+            {
+                "urlPostfix": "mroc2",
+                "name": "San Jose",
+                "code": "SJO"
+            },
+            {
+                "urlPostfix": "cywg",
+                "name": "Winnipeg",
+                "code": "YWG"
+            },
+            {
+                "urlPostfix": "kmke",
+                "name": "Milwaukee",
+                "code": "MKE"
+            },
+            {
+                "urlPostfix": "kcrq2",
+                "name": "Carlsbad",
+                "code": "CLD"
+            },
+            {
+                "urlPostfix": "kfll",
+                "name": "Fort Lauderdale",
+                "code": "FLL"
+            },
+            {
+                "urlPostfix": "kgrr2",
+                "name": "Grand Rapids",
+                "code": "GRR"
+            },
+            {
+                "urlPostfix": "cyeg_app",
+                "name": "Edmonton",
+                "code": "YEG"
+            },
+            {
+                "urlPostfix": "kapa",
+                "name": "Denver",
+                "code": "APA"
+            },
+            {
+                "urlPostfix": "mmtj",
+                "name": "Tijuana, Mexico",
+                "code": "TIJ"
+            },
+            {
+                "urlPostfix": "mpto_1181",
+                "name": "Panama City",
+                "code": "PTY"
+            },
+            {
+                "urlPostfix": "mggt_gnd_twr",
+                "name": "Guatemala City",
+                "code": "GUA"
+            }
+        ]
+    },
+    {
+        "groupName": "Europe",
+        "airports": [
+            {
+                "urlPostfix": "lppt_app_1191_2",
+                "name": "Lisbon, Portugal",
+                "code": "LIS"
+            },
+            {
+                "urlPostfix": "eppo2",
+                "name": "Poznan, Poland",
+                "code": "POZ"
+            },
+            {
+                "urlPostfix": "eyvi",
+                "name": "Vilnius, Lithuania",
+                "code": "VNO"
+            },
+            {
+                "urlPostfix": "eidw3",
+                "name": "Dublin",
+                "code": "DUB"
+            },
+            {
+                "urlPostfix": "ebbr_arr",
+                "name": "Brussels",
+                "code": "BRU"
+            },
+            {
+                "urlPostfix": "lhbp_app",
+                "name": "Budapest",
+                "code": "BUD"
+            },
+            {
+                "urlPostfix": "uuee2",
+                "name": "Moscow",
+                "code": "SVO"
+            },
+            {
+                "urlPostfix": "uuww",
+                "name": "Moscow",
+                "code": "VKO"
+            },
+            {
+                "urlPostfix": "urkk",
+                "name": "Krasnodar",
+                "code": "KRR"
+            },
+            {
+                "urlPostfix": "unnt",
+                "name": "Novosibirsk",
+                "code": "OVB"
+            },
+            {
+                "urlPostfix": "urmt",
+                "name": "Stavropol",
+                "code": "STW"
+            },
+            {
+                "urlPostfix": "urss",
+                "name": "Sochi",
+                "code": "AER"
+            },
+            {
+                "urlPostfix": "usdd",
+                "name": "Salekhard",
+                "code": "SLY"
+            },
+            {
+                "urlPostfix": "ulli",
+                "name": "Saint Petersburg",
+                "code": "LED"
+            },
+            {
+                "urlPostfix": "lfll",
+                "name": "Lyon",
+                "code": "LYS"
+            },
+            {
+                "urlPostfix": "eham01_twr_main1",
+                "name": "Schiphol, Amsterdam",
+                "code": "AMS"
+            },
+            {
+                "urlPostfix": "lfp_dep",
+                "name": "Paris",
+                "code": "ORY"
+            },
+            {
+                "urlPostfix": "esow",
+                "name": "Stockholm / Västerås",
+                "code": "VST"
+            },
+            {
+                "urlPostfix": "engm2_app",
+                "name": "Oslo",
+                "code": "OSL"
+            },
+            {
+                "urlPostfix": "esgg",
+                "name": "Gothenburg",
+                "code": "GOT"
+            },
+            {
+                "urlPostfix": "espa",
+                "name": "Luleå",
+                "code": "LLA"
+            },
+            {
+                "urlPostfix": "enbo_twr",
+                "name": "Bodo Norway",
+                "code": "ENBO"
+            },
+            {
+                "urlPostfix": "einn2",
+                "name": "Shannon",
+                "code": "SNN"
+            },
+            {
+                "urlPostfix": "ekch_twr",
+                "name": "Copenhagen",
+                "code": "CPH"
+            },
+            {
+                "urlPostfix": "epwa2",
+                "name": "Warsaw",
+                "code": "WAW"
+            },
+            {
+                "urlPostfix": "epmo",
+                "name": "Warsaw",
+                "code": "WMI"
+            },
+            {
+                "urlPostfix": "lfsb2",
+                "name": "Basel",
+                "code": "BSL"
+            },
+            {
+                "urlPostfix": "lszh_twr",
+                "name": "Zurich",
+                "code": "ZRH"
+            },
+            {
+                "urlPostfix": "lgav",
+                "name": "Athens",
+                "code": "ATH"
+            },
+            {
+                "urlPostfix": "lati",
+                "name": "Tirana",
+                "code": "TIA"
+            },
+            {
+                "urlPostfix": "eheh",
+                "name": "Eindhoven",
+                "code": "EIN"
+            },
+            {
+                "urlPostfix": "ltba",
+                "name": "Istanbul",
+                "code": "IST"
+            },
+            {
+                "urlPostfix": "ukbb2",
+                "name": "Kyiv",
+                "code": "KBP"
+            },
+            {
+                "urlPostfix": "evra2",
+                "name": "Riga",
+                "code": "RIX"
+            },
+            {
+                "urlPostfix": "epgd",
+                "name": "Gdansk",
+                "code": "GDN"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Odessa",
+                "code": "ODS"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Thessaloniki",
+                "code": "SKG"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Berlin",
+                "code": "TXL"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Berlin",
+                "code": "SXF"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Berlin",
+                "code": "BER"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Frankfurt",
+                "code": "FRA"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Minsk",
+                "code": "MSQ"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Domodedovo",
+                "code": "DME"
+            },
+            {
+                "urlPostfix": "lrop",
+                "name": "Bucharest",
+                "code": "OTP"
+            },
+            {
+                "urlPostfix": "lukk_control",
+                "name": "Chisinau",
+                "code": "KIV"
+            },
+            {
+                "urlPostfix": "lkpr_twr",
+                "name": "Prague",
+                "code": "PRG"
+            },
+            {
+                "urlPostfix": "lktb",
+                "name": "Brno",
+                "code": "BRQ"
+            }
+        ]
+    },
+    {
+        "groupName": "Asia",
+        "airports": [
+            {
+                "urlPostfix": "omdb_twr",
+                "name": "Dubai",
+                "code": "DXB"
+            },
+            {
+                "urlPostfix": "zbaa",
+                "name": "Beijing",
+                "code": "PEK"
+            },
+            {
+                "urlPostfix": "rjtt_control",
+                "name": "Tokyo",
+                "code": "HND"
+            },
+            {
+                "urlPostfix": "vhhh_app_1191_2",
+                "name": "Hong Kong",
+                "code": "HKG"
+            },
+            {
+                "urlPostfix": "wmkk2",
+                "name": "Kuala Lumpur",
+                "code": "KUL"
+            },
+            {
+                "urlPostfix": "unoo",
+                "name": "Omsk",
+                "code": "OMS"
+            },
+            {
+                "urlPostfix": "rpll",
+                "name": "Manila",
+                "code": "MNL"
+            },
+            {
+                "urlPostfix": "uaaa",
+                "name": "Almaty",
+                "code": "ALA"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Perm",
+                "code": "PEE"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Astana Kazakhstan",
+                "code": "TSE"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Aktobe Kazakhstan",
+                "code": "AKX"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Denpasar",
+                "code": "DPS"
+            }
+        ]
+    },
+    {
+        "groupName": "South America / Oceania / Space",
+        "airports": [
+            {
+                "urlPostfix": "sbfi",
+                "name": "Foz do Iguacu, Paraguay",
+                "code": "IGU"
+            },
+            {
+                "urlPostfix": "fmmi",
+                "name": "Antananarivo,  Madagascar",
+                "code": "TNR"
+            },
+            {
+                "urlPostfix": "segu",
+                "name": "Jose Joaquin de Olmedo,  Ecuador",
+                "code": "GYE"
+            },
+            {
+                "urlPostfix": "spjc2",
+                "name": "Lima, Peru",
+                "code": "LIM"
+            },
+            {
+                "urlPostfix": "sgas",
+                "name": "Asuncion, Paraguay",
+                "code": "ASU"
+            },
+            {
+                "urlPostfix": "skbo3",
+                "name": "Bogota, El Nuevo Dorado",
+                "code": "BOG"
+            },
+            {
+                "urlPostfix": "svva",
+                "name": " Valencia",
+                "code": "VLN"
+            },
+            {
+                "urlPostfix": "mmgl",
+                "name": "Guadalajara,  Mexico",
+                "code": "GDL"
+            },
+            {
+                "urlPostfix": "mmmx1",
+                "name": "Mexico City",
+                "code": "MEX"
+            },
+            {
+                "urlPostfix": "sabe2",
+                "name": "Buenos Aires",
+                "code": "AEP"
+            },
+            {
+                "urlPostfix": "sant",
+                "name": "Tucuman",
+                "code": "TUC"
+            },
+            {
+                "urlPostfix": "scel",
+                "name": "Santiago",
+                "code": "SCL"
+            },
+            {
+                "urlPostfix": "sbbr_acc",
+                "name": "Brasilia",
+                "code": "BSB"
+            },
+            {
+                "urlPostfix": "yssy1",
+                "name": "Sydney",
+                "code": "SYD"
+            },
+            {
+                "urlPostfix": "ypph_twr",
+                "name": "Perth (Tower)",
+                "code": "PER"
+            },
+            {
+                "urlPostfix": "ypph_app",
+                "name": "Perth (Approach)",
+                "code": "PER"
+            },
+            {
+                "urlPostfix": "ypjt",
+                "name": "Perth",
+                "code": "JAD"
+            },
+            {
+                "urlPostfix": "ybbn6",
+                "name": "Brisbane",
+                "code": "BNE"
+            },
+            {
+                "urlPostfix": "ypad",
+                "name": "Adelaide",
+                "code": "ADL"
+            },
+            {
+                "urlPostfix": "ymml",
+                "name": "Melbourne",
+                "code": "MEL"
+            },
+            {
+                "urlPostfix": "",
+                "name": "Ministro Pistarini",
+                "code": "EZE"
+            },
+            {
+                "urlPostfix": "skbq_app",
+                "name": "Barranquilla",
+                "code": "BAQ"
+            },
+            {
+                "urlPostfix": "iss",
+                "name": "ISS Space Station (beta)",
+                "code": "ISS"
+            }
+        ]
+    }
+]

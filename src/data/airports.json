@@ -1,0 +1,452 @@
+[
+    {
+        "urlPostfix": "rjtt_app_dep",
+        "codeICAO": "RJTT App/Dep",
+        "city": "Tokyo",
+        "country": "Japan",
+        "codeIATA": "HND",
+        "airport": "Tokyo Intl Airport (Haneda)",
+        "countryCode": "JP"
+    },
+    {
+        "urlPostfix": "ypad_misc",
+        "codeICAO": "YPAD Del/Gnd/Twr/App",
+        "city": "Adelaide",
+        "country": "Australia",
+        "codeIATA": "ADL",
+        "airport": "Adelaide Intl Airport",
+        "countryCode": "AU"
+    },
+    {
+        "urlPostfix": "rjtt_control",
+        "codeICAO": "RJTT Tokyo Control",
+        "city": "Tokyo",
+        "country": "Japan",
+        "codeIATA": "HND",
+        "airport": "Tokyo Intl Airport (Haneda)",
+        "countryCode": "JP"
+    },
+    {
+        "urlPostfix": "zbaa",
+        "codeICAO": "ZBAA Tower",
+        "city": "Beijing",
+        "country": "China",
+        "codeIATA": "PEK",
+        "airport": "Beijing Capital Intl Airport",
+        "countryCode": "CN"
+    },
+    {
+        "urlPostfix": "katl_twr",
+        "codeICAO": "KATL Tower",
+        "city": "Atlanta",
+        "country": "United States",
+        "codeIATA": "ATL",
+        "airport": "Hartsfield-Jackson Atlanta Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "lppt_app_1191_2",
+        "codeICAO": "LPPT Approach",
+        "city": "Lisbon",
+        "country": "Portugal",
+        "codeIATA": "LIS",
+        "airport": "Portela Airport (Lisbon Airport)",
+        "countryCode": "PT"
+    },
+    {
+        "urlPostfix": "kord7",
+        "codeICAO": "KORD Tower",
+        "city": "Chicago",
+        "country": "United States",
+        "codeIATA": "ORD",
+        "airport": "Chicago O'Hare Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "lszh1_twr",
+        "codeICAO": "LSZH Tower",
+        "city": "Zurich",
+        "country": "Switzerland",
+        "codeIATA": "ZRH",
+        "airport": "Zurich Airport",
+        "countryCode": "CH"
+    },
+    {
+        "urlPostfix": "lfpg3_dep",
+        "codeICAO": "LFPG Tower",
+        "city": "Paris",
+        "country": "France",
+        "codeIATA": "CDG",
+        "airport": "Paris - Roissy Charles de Gaulle Airport",
+        "countryCode": "FR"
+    },
+    {
+        "urlPostfix": "eidw3",
+        "codeICAO": "EIDW Del/Gnd/Twr/App/Center",
+        "city": "Dublin",
+        "country": "Ireland",
+        "codeIATA": "DUB",
+        "airport": "Dublin Intl Airport",
+        "countryCode": "IE"
+    },
+    {
+        "urlPostfix": "lrop",
+        "codeICAO": "LROP Twr/App/Radar",
+        "city": "Bucharest",
+        "country": "Romania",
+        "codeIATA": "OTP",
+        "airport": "Bucharest (Henri Coanda) Intl Airport",
+        "countryCode": "RO"
+    },
+    {
+        "urlPostfix": "kbos_twr",
+        "codeICAO": "KBOS Tower",
+        "city": "Boston",
+        "country": "United States",
+        "codeIATA": "BOS",
+        "airport": "Gen. Edward Lawrence Logan Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "rjtt2",
+        "codeICAO": "RJTT Company Channels",
+        "city": "Tokyo",
+        "country": "Japan",
+        "codeIATA": "HND",
+        "airport": "Tokyo Intl Airport (Haneda)",
+        "countryCode": "JP"
+    },
+    {
+        "urlPostfix": "scel",
+        "codeICAO": "SCEL Gnd/Twr/Radar",
+        "city": "Santiago",
+        "country": "Chile",
+        "codeIATA": "SCL",
+        "airport": "Arturo Merino Benitez Intl",
+        "countryCode": "CL"
+    },
+    {
+        "urlPostfix": "epwa_app",
+        "codeICAO": "EPWA Approach #1",
+        "city": "Warsaw",
+        "country": "Poland",
+        "codeIATA": "WAW",
+        "airport": "Warsaw Frederic Chopin Airport",
+        "countryCode": "PL"
+    },
+    {
+        "urlPostfix": "mroc",
+        "codeICAO": "MROC Del/Gnd/Twr/App/Center/Misc",
+        "city": "San Jose",
+        "country": "Costa Rica",
+        "codeIATA": "SJO",
+        "airport": "Juan Santamaria Intl Airport",
+        "countryCode": "CR"
+    },
+    {
+        "urlPostfix": "kjfk_twr",
+        "codeICAO": "KJFK Tower",
+        "city": "New York",
+        "country": "United States",
+        "codeIATA": "JFK",
+        "airport": "John F. Kennedy Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "unnt",
+        "codeICAO": "UNNT Gnd/Twr/App/Radar/Misc",
+        "city": "Novosibirsk",
+        "country": "Russia",
+        "codeIATA": "OVB",
+        "airport": "Novosibirsk Tolmachevo Airport",
+        "countryCode": "RU"
+    },
+    {
+        "urlPostfix": "kapa2_twr1",
+        "codeICAO": "KAPA Tower (Primary)",
+        "city": "Denver",
+        "country": "United States",
+        "codeIATA": "APA",
+        "airport": "Centennial Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "sbfz4",
+        "codeICAO": "SBFZ Twr/App/Center",
+        "city": "Fortaleza",
+        "country": "Brazil",
+        "codeIATA": "FOR",
+        "airport": "Pinto Martins Intl Airport",
+        "countryCode": "BR"
+    },
+    {
+        "urlPostfix": "mmmx1",
+        "codeICAO": "MMMX Twr/App",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "codeIATA": "MEX",
+        "airport": "Mexico City Intl Airport",
+        "countryCode": "MX"
+    },
+    {
+        "urlPostfix": "kiah1_2",
+        "codeICAO": "KIAH Approach",
+        "city": "Houston",
+        "country": "United States",
+        "codeIATA": "IAH",
+        "airport": "George Bush Intercontinental Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "klax_twr",
+        "codeICAO": "KLAX Tower (North/South)",
+        "city": "Los Angeles",
+        "country": "United States",
+        "codeIATA": "LAX",
+        "airport": "Los Angeles Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "klax6",
+        "codeICAO": "KLAX Final App (North/South)",
+        "city": "Los Angeles",
+        "country": "United States",
+        "codeIATA": "LAX",
+        "airport": "Los Angeles Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "kden1_3",
+        "codeICAO": "KDEN Tower",
+        "city": "Denver",
+        "country": "United States",
+        "codeIATA": "DEN",
+        "airport": "Denver Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "kbtv",
+        "codeICAO": "KBTV Del/Gnd/Twr/App",
+        "city": "Burlington",
+        "country": "United States",
+        "codeIATA": "BTV",
+        "airport": "Burlington Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "cyul_app",
+        "codeICAO": "CYUL Approach/Departure",
+        "city": "Montreal",
+        "country": "Canada",
+        "codeIATA": "YUL",
+        "airport": "Montreal Intl (Dorval)",
+        "countryCode": "CA"
+    },
+    {
+        "urlPostfix": "sbpa2",
+        "codeICAO": "SBPA Gnd/Twr/App/Center",
+        "city": "Porto Alegre",
+        "country": "Brazil",
+        "codeIATA": "POA",
+        "airport": "Salgado Filho Intl Airport",
+        "countryCode": "BR"
+    },
+    {
+        "urlPostfix": "sbmg",
+        "codeICAO": "SBMG Twr/App",
+        "city": "Maringa",
+        "country": "Brazil",
+        "codeIATA": "MGF",
+        "airport": "Maringa Domestic Airport",
+        "countryCode": "BR"
+    },
+    {
+        "urlPostfix": "kads1_1",
+        "codeICAO": "KADS Tower",
+        "city": "Dallas",
+        "country": "United States",
+        "codeIATA": "ADS",
+        "airport": "Addison Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "rjtt_twr_tca",
+        "codeICAO": "RJTT Del/Twr/TCA/Gnd",
+        "city": "Tokyo",
+        "country": "Japan",
+        "codeIATA": "HND",
+        "airport": "Tokyo Intl Airport (Haneda)",
+        "countryCode": "JP"
+    },
+    {
+        "urlPostfix": "ktys",
+        "codeICAO": "KTYS Del/Gnd/Twr/App",
+        "city": "Knoxville",
+        "country": "United States",
+        "codeIATA": "TYS",
+        "airport": "McGhee Tyson Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "panc",
+        "codeICAO": "PANC Del/Gnd/Twr/App",
+        "city": "Anchorage",
+        "country": "United States",
+        "codeIATA": "ANC",
+        "airport": "Ted Stevens Anchorage Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "sumu",
+        "codeICAO": "SUMU Twr/App/Radar",
+        "city": "Montevideo",
+        "country": "Uruguay",
+        "codeIATA": "MVD",
+        "airport": "Carrasco Intl/Gen C L Berisso",
+        "countryCode": "UY"
+    },
+    {
+        "urlPostfix": "kpdk2_twr",
+        "codeICAO": "KPDK Tower #1",
+        "city": "Atlanta",
+        "country": "United States",
+        "codeIATA": "PDK",
+        "airport": "DeKalb–Peachtree Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "sbkp1_1",
+        "codeICAO": "SBKP Tower #1",
+        "city": "Campinas",
+        "country": "Brazil",
+        "codeIATA": "VCP",
+        "airport": "Viracopos Intl Airport",
+        "countryCode": "BR"
+    },
+    {
+        "urlPostfix": "ksan1_all",
+        "codeICAO": "KSAN Ramp/Del/Gnd/Twr",
+        "city": "San Diego",
+        "country": "United States",
+        "codeIATA": "SAN",
+        "airport": "San Diego Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "lfpo3_twr",
+        "codeICAO": "LFPO Tower",
+        "city": "Paris",
+        "country": "France",
+        "codeIATA": "ORY",
+        "airport": "Paris - Orly Airport",
+        "countryCode": "FR"
+    },
+    {
+        "urlPostfix": "lfpo3_app",
+        "codeICAO": "LFPO Approach",
+        "city": "Paris",
+        "country": "France",
+        "codeIATA": "ORY",
+        "airport": "Paris - Orly Airport",
+        "countryCode": "FR"
+    },
+    {
+        "urlPostfix": "zkc_mci",
+        "codeICAO": "KZKC Kansas City Center",
+        "city": "Kansas City",
+        "country": "United States",
+        "codeIATA": "ZKC",
+        "airport": "Kansas City Air Route Traffic Control Center",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "kdfw1_twr1_w",
+        "codeICAO": "KDFW Tower (West)",
+        "city": "Dallas",
+        "country": "United States",
+        "codeIATA": "DFW",
+        "airport": "Dallas-Fort Worth Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "cyow3",
+        "codeICAO": "CYOW Gnd/Twr/App",
+        "city": "Ottawa",
+        "country": "Canada",
+        "codeIATA": "YOW",
+        "airport": "Ottawa - Macdonald-Cartier Intl",
+        "countryCode": "CA"
+    },
+    {
+        "urlPostfix": "klga_gnd",
+        "codeICAO": "KLGA Ground #1",
+        "city": "New York",
+        "country": "United States",
+        "codeIATA": "LGA",
+        "airport": "LaGuardia Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "ktus2",
+        "codeICAO": "KTUS Del/Gnd/Twr/App/KDMA",
+        "city": "Tucson",
+        "country": "United States",
+        "codeIATA": "TUS",
+        "airport": "Tucson Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "klax4",
+        "codeICAO": "KLAX Tower (South)",
+        "city": "Los Angeles",
+        "country": "United States",
+        "codeIATA": "LAX",
+        "airport": "Los Angeles Intl Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "ktri",
+        "codeICAO": "KTRI Gnd/Twr/App",
+        "city": "Bristol/Johnson/Kingsport",
+        "country": "United States",
+        "codeIATA": "TRI",
+        "airport": "Tri-Cities Regional Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "zbw_mpv",
+        "codeICAO": "ZBW Boston Center (MPV52/PLB53)",
+        "city": "Boston",
+        "country": "United States",
+        "codeIATA": "ZBW",
+        "airport": "Boston Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "kfrg_twr1",
+        "codeICAO": "KFRG Tower",
+        "city": "Farmingdale",
+        "country": "United States",
+        "codeIATA": "FRG",
+        "airport": "Republic Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "wmkb",
+        "codeICAO": "WMKB Radar",
+        "city": "Penang",
+        "country": "Malaysia",
+        "codeIATA": "BWH",
+        "airport": "Butterworth",
+        "countryCode": "MY"
+    },
+    {
+        "urlPostfix": "kmia_twr",
+        "codeICAO": "KMIA Tower #1",
+        "city": "Miami",
+        "country": "United States",
+        "codeIATA": "MIA",
+        "airport": "Miami Intl Airport",
+        "countryCode": "US"
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": 0,
+        "name": "Synphaera Radio",
+        "description": "Featuring the music from an independent record label focused on modern electronic ambient and space music.",
+        "url": "http://ice6.somafm.com/synphaera-32-aac",
+        "imageUrl": "https://somafm.com/img3/synphaera120.jpg"
+    },
+    {
+        "id": 1,
+        "name": "Space Station Soma",
+        "description": "Tune in, turn on, space out. Spaced-out ambient and mid-tempo electronica.",
+        "url": "http://ice2.somafm.com/spacestation-32-aac",
+        "imageUrl": "https://somafm.com/img/sss.jpg"
+    },
+    {
+        "id": 2,
+        "name": "n5MD Radio",
+        "description": "Emotional Experiments in Music: Ambient, modern composition, post-rock, & experimental electronic music",
+        "url": "http://ice4.somafm.com/n5md-32-aac",
+        "imageUrl": "https://somafm.com/img/n5md120.png"
+    },
+    {
+        "id": 3,
+        "name": "Groove Salad Classic",
+        "description": "The classic (early 2000s) version of a nicely chilled plate of ambient/downtempo beats and grooves.",
+        "url": "http://ice6.somafm.com/gsclassic-32-mp3",
+        "imageUrl": "https://somafm.com/img3/gsclassic120.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Groove Salad",
+        "description": "A nicely chilled plate of ambient/downtempo beats and grooves.",
+        "url": "http://ice6.somafm.com/groovesalad-32-mp3",
+        "imageUrl": "https://somafm.com/img/groovesalad120.png"
+    },
+    {
+        "id": 5,
+        "name": "Deep Space One",
+        "description": "Deep ambient electronic, experimental and space music. For inner and outer space exploration.",
+        "url": "http://ice6.somafm.com/deepspaceone-32-mp3",
+        "imageUrl": "https://somafm.com/img/deepspaceone120.gif"
+    }
+]
