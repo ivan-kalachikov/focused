@@ -24,14 +24,14 @@
         "id": 3,
         "name": "Groove Salad Classic",
         "description": "The classic (early 2000s) version of a nicely chilled plate of ambient/downtempo beats and grooves.",
-        "url": "http://ice6.somafm.com/gsclassic-32-mp3",
+        "url": "http://ice6.somafm.com/gsclassic-32-aac",
         "imageUrl": "https://somafm.com/img3/gsclassic120.jpg"
     },
     {
         "id": 4,
         "name": "Groove Salad",
         "description": "A nicely chilled plate of ambient/downtempo beats and grooves.",
-        "url": "http://ice6.somafm.com/groovesalad-32-mp3",
+        "url": "http://ice4.somafm.com/groovesalad-32-aac",
         "imageUrl": "https://somafm.com/img/groovesalad120.png"
     },
     {

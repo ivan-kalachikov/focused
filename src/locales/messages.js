@@ -1,8 +1,13 @@
 const messages = {
-  en: {
+  ru: {
     ui: {
-      play: 'Play',
-      pause: 'Pause',
+      play: 'Играть',
+      pause: 'Пауза',
+      selectAirport: 'Выберите аэропорт',
+      selectMusic: 'Выберите музыку',
+      inspiredBy: 'Вдохновлено: ',
+      designBy: 'Дизайн от: ',
+      frontendBy: 'Frontend от: ',
     },
   },
 };

@@ -12,7 +12,6 @@ const store = createStore({
   state() {
     return {
       appStatus: 'playing',
-      appError: null,
       currentAirportCode: DEFAULT_AIRPORT_CODE,
       currentAirportUrl: getAirportUrlByCode(DEFAULT_AIRPORT_CODE),
       currentMusicId: DEFAULT_MUSIC_ID,
@@ -24,9 +23,6 @@ const store = createStore({
   mutations: {
     setAppStatus(state, status) {
       state.appStatus = status;
-    },
-    setAppError(state, error) {
-      state.appStatus = error;
     },
     setCurrentAirportCode(state, code) {
       state.currentAirportCode = code;

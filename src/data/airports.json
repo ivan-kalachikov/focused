@@ -4,7 +4,7 @@
         "codeICAO": "RJTT App/Dep",
         "city": "Tokyo",
         "country": "Japan",
-        "codeIATA": "HND",
+        "codeIATA": "HND1",
         "airport": "Tokyo Intl Airport (Haneda)",
         "countryCode": "JP"
     },
@@ -22,7 +22,7 @@
         "codeICAO": "RJTT Tokyo Control",
         "city": "Tokyo",
         "country": "Japan",
-        "codeIATA": "HND",
+        "codeIATA": "HND2",
         "airport": "Tokyo Intl Airport (Haneda)",
         "countryCode": "JP"
     },
@@ -112,7 +112,7 @@
         "codeICAO": "RJTT Company Channels",
         "city": "Tokyo",
         "country": "Japan",
-        "codeIATA": "HND",
+        "codeIATA": "HND3",
         "airport": "Tokyo Intl Airport (Haneda)",
         "countryCode": "JP"
     },
@@ -202,7 +202,7 @@
         "codeICAO": "KLAX Tower (North/South)",
         "city": "Los Angeles",
         "country": "United States",
-        "codeIATA": "LAX",
+        "codeIATA": "LAX1",
         "airport": "Los Angeles Intl Airport",
         "countryCode": "US"
     },
@@ -211,7 +211,7 @@
         "codeICAO": "KLAX Final App (North/South)",
         "city": "Los Angeles",
         "country": "United States",
-        "codeIATA": "LAX",
+        "codeIATA": "LAX2",
         "airport": "Los Angeles Intl Airport",
         "countryCode": "US"
     },
@@ -274,7 +274,7 @@
         "codeICAO": "RJTT Del/Twr/TCA/Gnd",
         "city": "Tokyo",
         "country": "Japan",
-        "codeIATA": "HND",
+        "codeIATA": "HND4",
         "airport": "Tokyo Intl Airport (Haneda)",
         "countryCode": "JP"
     },
@@ -337,7 +337,7 @@
         "codeICAO": "LFPO Tower",
         "city": "Paris",
         "country": "France",
-        "codeIATA": "ORY",
+        "codeIATA": "ORY1",
         "airport": "Paris - Orly Airport",
         "countryCode": "FR"
     },
@@ -346,7 +346,7 @@
         "codeICAO": "LFPO Approach",
         "city": "Paris",
         "country": "France",
-        "codeIATA": "ORY",
+        "codeIATA": "ORY2",
         "airport": "Paris - Orly Airport",
         "countryCode": "FR"
     },
@@ -400,7 +400,7 @@
         "codeICAO": "KLAX Tower (South)",
         "city": "Los Angeles",
         "country": "United States",
-        "codeIATA": "LAX",
+        "codeIATA": "LAX3",
         "airport": "Los Angeles Intl Airport",
         "countryCode": "US"
     },

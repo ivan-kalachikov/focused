@@ -1,19 +1,23 @@
 <template>
-  <div class="md-layout">
-    <MusicPlayer />
-    <!-- <SoundPlayer /> -->
-  </div>
+  <a-layout class="layout">
+    <a-layout-content>
+      <a-row align="middle" justify="center" class="container">
+        <Main />
+      </a-row>
+    </a-layout-content>
+    <Footer />
+  </a-layout>
 </template>
 
 <script>
-import MusicPlayer from './components/MusicPlayer.vue';
-// import SoundPlayer from './components/SoundPlayer.vue';
+import Main from './components/Main.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
-    MusicPlayer,
-    // SoundPlayer,
+    Main,
+    Footer,
   },
 };
 </script>
@@ -24,6 +28,17 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #4d9dee;
-  margin-top: 60px;
+  height: 100%;
+}
+
+.layout {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 </style>
