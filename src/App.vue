@@ -1,10 +1,6 @@
 <template>
   <a-layout class="layout">
-    <a-layout-content>
-      <a-row align="middle" justify="center" class="container">
-        <Main />
-      </a-row>
-    </a-layout-content>
+    <Main />
     <Footer />
   </a-layout>
 </template>
@@ -23,6 +19,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,11 +31,7 @@ export default {
 .layout {
   min-height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
-.container {
-  height: 100%;
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
 </style>

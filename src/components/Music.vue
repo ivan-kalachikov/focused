@@ -2,7 +2,8 @@
   <a-col :xs="{ span: 22 }" :md="{ span: 11 }" :xl="{ span: 7 }" :xxl="{ span: 5 }">
     <a-card :bordered="false">
       <a-row :gutter="16" justify="start">
-        <a-col flex="55px">
+        <a-col flex="55px" :class="['icon-wrapper', musicStatus === 'failed' && 'error']">
+          <Spinner v-if="musicStatus === 'pending' && appStatus === 'playing'" class="spinner" />
           <musicIcon />
         </a-col>
         <a-col flex="auto">
@@ -33,7 +34,12 @@
       </a-row>
       <a-row>
         <a-col flex="100%">
-          <a-slider @change="handleVolumeChange" :default-value="100" tooltipPlacement="bottom" />
+          <a-slider
+            @change="handleVolumeChange"
+            :default-value="100"
+            tooltipPlacement="bottom"
+            :disabled="musicStatus === 'failed'"
+          />
           </a-col>
       </a-row>
     </a-card>
@@ -44,6 +50,7 @@
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
 import musicIcon from '../assets/music.svg';
+import Spinner from '../assets/tail-spin.svg';
 
 export default {
   name: 'Music',
@@ -51,24 +58,47 @@ export default {
     const { t } = useI18n();
     return { t };
   },
+  props: ['audio'],
+  beforeUpdate() {
+    this.audio.addEventListener('waiting', this.setPending);
+    this.audio.addEventListener('emptied', this.setPending);
+    this.audio.addEventListener('loadeddata', this.setReady);
+  },
+  beforeUnmount() {
+    this.audio.removeEventListener('waiting', this.setPending);
+    this.audio.removeEventListener('emptied', this.setPending);
+    this.audio.removeEventListener('loadeddata', this.setReady);
+  },
   computed: mapState({
-    music: (state) => state.music,
-    currentMusicId: (state) => state.currentMusicId,
+    music: (state) => state.music.list,
+    musicStatus: (state) => state.music.status,
+    musicVolume: (state) => state.music.volume,
+    currentMusicId: (state) => state.music.currentId,
+    appStatus: (state) => state.appStatus,
   }),
+  watch: {
+    musicVolume(newVal) {
+      this.audio.volume = newVal;
+    },
+  },
   methods: {
-    ...mapMutations(['setCurrentMusicId']),
+    ...mapMutations(['setCurrentMusicId', 'setMusicStatus', 'setMusicVolume']),
     handleChange(id) {
       this.setCurrentMusicId(id);
-      if (this.appStatus === 'playing') {
-        this.$refs.musicPlayer.play();
-      }
     },
     handleVolumeChange(value) {
-      this.$refs.musicPlayer.volume = value / 100;
+      this.setMusicVolume(value / 100);
+    },
+    setPending() {
+      this.setMusicStatus('pending');
+    },
+    setReady() {
+      this.setMusicStatus('ready');
     },
   },
   components: {
     musicIcon,
+    Spinner,
   },
 };
 </script>
@@ -77,9 +107,24 @@ export default {
 .ant-select-item-option-content img {
   width: 40px;
   height: 40px;
+  margin-right: 5px;
 }
 
 .ant-select-selection-item img {
   display: none;
+}
+
+.icon-wrapper {
+  position: relative;
+}
+
+.icon-wrapper.error path {
+  fill: #6f2b39;
+}
+
+.spinner {
+  position: absolute;
+  top: -1px;
+  left: 7px;
 }
 </style>

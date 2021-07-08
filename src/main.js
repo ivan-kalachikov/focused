@@ -1,7 +1,8 @@
 import { createApp } from 'vue';
 import {
-  Select, Typography, Slider, Row, Col, Card, Layout,
+  Select, Typography, Slider, Row, Col, Card, Layout, Popover,
 } from 'ant-design-vue';
+import AudioVisual from 'vue-audio-visual';
 import store from './store';
 import i18n from './locales/i18n';
 
@@ -17,4 +18,6 @@ AppInstance.use(store)
   .use(Col)
   .use(Card)
   .use(Layout)
+  .use(Popover)
+  .use(AudioVisual)
   .mount('#app');

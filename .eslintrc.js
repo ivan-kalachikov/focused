@@ -29,5 +29,6 @@ module.exports = {
       },
     ],
     'vue/no-multiple-template-root': 0,
+    'vue/no-mutating-props': 0,
   },
 };
