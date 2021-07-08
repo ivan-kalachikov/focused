@@ -40,5 +40,40 @@
         "description": "Deep ambient electronic, experimental and space music. For inner and outer space exploration.",
         "url": "http://ice2.somafm.com/deepspaceone-32-aac",
         "imageUrl": "https://somafm.com/img/deepspaceone120.gif"
+    },
+    {
+        "id": 6,
+        "name": "Fluid",
+        "description": "Drown in the electronic sound of instrumental hiphop, future soul and liquid trap.",
+        "url": "http://ice2.somafm.com/fluid-32-aac",
+        "imageUrl": "https://somafm.com/img/fluid120.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Cliqhop idm",
+        "description": "Blips'n'beeps backed mostly w/beats. Intelligent Dance Music.",
+        "url": "http://ice4.somafm.com/cliqhop-32-aac",
+        "imageUrl": "https://api.somafm.com/img/cliqhop120.png"
+    },
+    {
+        "id": 8,
+        "name": "Digitalis",
+        "description": "Digitally affected analog rock to calm the agitated heart.",
+        "url": "http://ice4.somafm.com/digitalis-32-aac",
+        "imageUrl": "https://api.somafm.com/img/digitalis120.png"
+    },
+    {
+        "id": 9,
+        "name": "Drone Zone",
+        "description": "Served best chilled, safe with most medications. Atmospheric textures with minimal beats.",
+        "url": "http://ice4.somafm.com/dronezone-32-aac",
+        "imageUrl": "https://api.somafm.com/img/dronezone120.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Black Rock FM",
+        "description": "From the Playa to the world, for the annual Burning Man festival.",
+        "url": "http://ice4.somafm.com/brfm-32-aac",
+        "imageUrl": "https://api.somafm.com/img/1023brc.jpg"
     }
 ]

@@ -133,5 +133,32 @@
         "codeIATA": "BUD",
         "airport": "Budapest Airport",
         "countryCode": "HU"
+    },
+    {
+        "urlPostfix": "mmmx2",
+        "codeICAO": "MMMX",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "codeIATA": "MEX",
+        "airport": "Mexico City International Airport",
+        "countryCode": "MX"
+    },
+    {
+        "urlPostfix": "khpn_atis2",
+        "codeICAO": "KHPN",
+        "city": "New York",
+        "country": "Mexico",
+        "codeIATA": "HPN",
+        "airport": "Westchester County Airport",
+        "countryCode": "US"
+    },
+    {
+        "urlPostfix": "obbi",
+        "codeICAO": "OBBI",
+        "city": "Muharraq",
+        "country": "Bahrain",
+        "codeIATA": "BAH",
+        "airport": "Bahrain International Airport",
+        "countryCode": "BH"
     }
 ]
