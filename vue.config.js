@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '',
   css: {
     sourceMap: true,
     loaderOptions: {
