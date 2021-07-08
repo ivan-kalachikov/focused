@@ -192,15 +192,15 @@ export default {
   width: 140px;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 0 45px 15px rgba(85, 98, 212, 0.35);
+  animation: pulse 2s ease-in infinite alternate;
+  animation-play-state: paused;
   margin-top: 75px;
   margin-bottom: 60px;
 }
 
 .playpause.playing,
 .playpause:hover {
-  box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.2);
-  animation: pulse 2s ease-in infinite alternate;
+  animation-play-state: running;
 }
 
 .playpause:focus {
