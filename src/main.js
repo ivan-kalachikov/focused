@@ -3,6 +3,7 @@ import {
   Select, Typography, Slider, Row, Col, Card, Layout, Popover,
 } from 'ant-design-vue';
 import AudioVisual from 'vue-audio-visual';
+import VueYandexMetrika from 'vue-yandex-metrika';
 import store from './store';
 import i18n from './locales/i18n';
 
@@ -20,4 +21,8 @@ AppInstance.use(store)
   .use(Layout)
   .use(Popover)
   .use(AudioVisual)
+  .use(VueYandexMetrika, {
+    id: 82726366,
+    env: process.env.NODE_ENV,
+  })
   .mount('#app');
