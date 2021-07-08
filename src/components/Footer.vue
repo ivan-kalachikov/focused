@@ -91,6 +91,7 @@ export default {
 }
 
 .ant-popover-content {
-  max-width: 300px;
+  width: 370px;
+  max-width: 90vw;
 }
 </style>
