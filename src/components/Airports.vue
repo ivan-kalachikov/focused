@@ -26,9 +26,10 @@
             >
               <span >
                 <img
-                  width="40"
-                  height="40"
-                  :src="`https://www.countryflags.io/${item.countryCode}/flat/48.png`"
+                  class="country"
+                  width="32"
+                  height="24"
+                  :src="`https://flagcdn.com/32x24/${item.countryCode}.png`"
                 />
                 {{ item.city }}
                 <span class="ant-typography ant-typography-secondary">({{ item.codeIATA }})</span>
@@ -109,9 +110,9 @@ export default {
 </script>
 
 <style>
-.ant-select-item-option-content img {
-  width: 40px;
-  height: 40px;
+.ant-select-item-option-content .country {
+  width: 32px;
+  height: 24px;
   margin-right: 5px;
 }
 

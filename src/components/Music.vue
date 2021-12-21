@@ -104,6 +104,12 @@ export default {
 </script>
 
 <style>
+.ant-select-item-option-content {
+  height: 50px;
+  align-items: center;
+  display: flex;
+}
+
 .ant-select-item-option-content img {
   width: 40px;
   height: 40px;

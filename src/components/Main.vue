@@ -32,9 +32,21 @@
     :fft-size="512"
   />
   <a-layout-content class="content">
-    <a-row align="middle" justify="center" class="container">
+    <a-row
+      align="middle"
+      justify="center"
+      class="container"
+    >
       <a-col flex="100%">
         <a-row justify="center">
+          <div class="christmas">
+            <img
+              src="../assets/christmas-hat.png"
+              :alt="t('ui.christmas')"
+              :title="t('ui.christmas')"
+              class="christmas-hat"
+            >
+          </div>
           <Logo />
         </a-row>
         <a-row justify="center">
@@ -44,7 +56,10 @@
             :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
           ></div>
         </a-row>
-        <a-row :gutter="[24, 12]" justify="center">
+        <a-row
+          :gutter="[24, 12]"
+          justify="center"
+        >
           <Music :audio="this.$refs.musicPlayer" />
           <Airports :audio="this.$refs.airportPlayer" />
         </a-row>
@@ -208,7 +223,7 @@ export default {
 }
 
 .playpause:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50px;
   left: 56px;
@@ -230,7 +245,7 @@ export default {
 }
 
 .playpause:after {
-  content: '';
+  content: "";
   position: absolute;
   background: inherit;
   width: 0;
@@ -238,6 +253,16 @@ export default {
   top: 30px;
   left: 66px;
   transition: 0.15s ease-in-out;
+}
+
+.christmas {
+  position: absolute;
+  transform: translate(100px, -50%);
+}
+
+.christmas-hat {
+   width: 91px;
+  animation: christmas 2s ease-in infinite alternate;
 }
 
 @media screen and (min-width: 768px) {
@@ -280,5 +305,27 @@ export default {
   100% {
     box-shadow: 0 0 35px 12px rgba(85, 98, 212, 0.4);
   }
+}
+
+@keyframes christmas {
+  0% {
+    transform: rotate(0deg)
+  }
+  20% {
+    transform: rotate(5deg)
+  }
+  40% {
+    transform: rotate(-5deg)
+  }
+  60% {
+    transform: rotate(10deg)
+  }
+  80% {
+    transform: rotate(-10deg)
+  }
+  100% {
+    transform: rotate(0deg)
+  }
+
 }
 </style>

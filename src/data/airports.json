@@ -6,7 +6,7 @@
         "country": "Russia",
         "codeIATA": "SVO",
         "airport": "Sheremetyevo - A.S. Pushkin international airport",
-        "countryCode": "RU"
+        "countryCode": "ru"
     },
     {
         "urlPostfix": "urss",
@@ -15,7 +15,7 @@
         "country": "Russia",
         "codeIATA": "AER",
         "airport": "Sochi International Airport",
-        "countryCode": "RU"
+        "countryCode": "ru"
     },
     {
         "urlPostfix": "urkk",
@@ -24,7 +24,7 @@
         "country": "Russia",
         "codeIATA": "KRR",
         "airport": "Krasnodar Pashkovskiy Airport",
-        "countryCode": "RU"
+        "countryCode": "ru"
     },
     {
         "urlPostfix": "unnt",
@@ -33,7 +33,7 @@
         "country": "Russia",
         "codeIATA": "OVB",
         "airport": "Novosibirsk Tolmachevo Airport",
-        "countryCode": "RU"
+        "countryCode": "ru"
     },
     {
         "urlPostfix": "unoo",
@@ -42,7 +42,7 @@
         "country": "Russia",
         "codeIATA": "OMS",
         "airport": "Omsk Tsentralny Airport",
-        "countryCode": "RU"
+        "countryCode": "ru"
     },
     {
         "urlPostfix": "ehbk1_twr",
@@ -51,7 +51,7 @@
         "country": "Netherlands",
         "codeIATA": "MST",
         "airport": "Maastricht Aachen Airport",
-        "countryCode": "NL"
+        "countryCode": "nl"
     },
     {
         "urlPostfix": "eidw3",
@@ -60,7 +60,7 @@
         "country": "Ireland",
         "codeIATA": "DUB",
         "airport": "Dublin Airport",
-        "countryCode": "IE"
+        "countryCode": "ie"
     },
     {
         "urlPostfix": "eneg2",
@@ -69,7 +69,7 @@
         "country": "Norway",
         "codeIATA": "OSL",
         "airport": "Oslo Airport",
-        "countryCode": "NO"
+        "countryCode": "no"
     },
     {
         "urlPostfix": "esow",
@@ -78,7 +78,7 @@
         "country": "Sweden",
         "codeIATA": "ARN",
         "airport": "Stockholm Arlanda Airport",
-        "countryCode": "SE"
+        "countryCode": "se"
     },
     {
         "urlPostfix": "essl",
@@ -87,7 +87,7 @@
         "country": "Sweden",
         "codeIATA": "LPI",
         "airport": "Linköping City Airport",
-        "countryCode": "SE"
+        "countryCode": "se"
     },
     {
         "urlPostfix": "eyvi",
@@ -96,7 +96,7 @@
         "country": "Lithuania",
         "codeIATA": "VNO",
         "airport": "Vilnius Airport",
-        "countryCode": "LT"
+        "countryCode": "lt"
     },
     {
         "urlPostfix": "lbsf_ctl_east",
@@ -105,7 +105,7 @@
         "country": "Bulgaria",
         "codeIATA": "SOF",
         "airport": "Sofia Airport",
-        "countryCode": "BG"
+        "countryCode": "bg"
     },
     {
         "urlPostfix": "lfpo3_app",
@@ -114,7 +114,7 @@
         "country": "France",
         "codeIATA": "ORY",
         "airport": "Paris Orly Airport",
-        "countryCode": "FR"
+        "countryCode": "fr"
     },
     {
         "urlPostfix": "lfbd_bordeaux",
@@ -123,7 +123,7 @@
         "country": "France",
         "codeIATA": "BOD",
         "airport": "Bordeaux Airport",
-        "countryCode": "FR"
+        "countryCode": "fr"
     },
     {
         "urlPostfix": "lhbp_app_e",
@@ -132,7 +132,7 @@
         "country": "Hungary",
         "codeIATA": "BUD",
         "airport": "Budapest Airport",
-        "countryCode": "HU"
+        "countryCode": "hu"
     },
     {
         "urlPostfix": "mmmx2",
@@ -141,7 +141,7 @@
         "country": "Mexico",
         "codeIATA": "MEX",
         "airport": "Mexico City International Airport",
-        "countryCode": "MX"
+        "countryCode": "mx"
     },
     {
         "urlPostfix": "khpn_atis2",
@@ -150,7 +150,7 @@
         "country": "Mexico",
         "codeIATA": "HPN",
         "airport": "Westchester County Airport",
-        "countryCode": "US"
+        "countryCode": "us"
     },
     {
         "urlPostfix": "obbi",
@@ -159,6 +159,6 @@
         "country": "Bahrain",
         "codeIATA": "BAH",
         "airport": "Bahrain International Airport",
-        "countryCode": "BH"
+        "countryCode": "bh"
     }
 ]
