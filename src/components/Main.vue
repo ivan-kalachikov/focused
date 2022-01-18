@@ -39,14 +39,6 @@
     >
       <a-col flex="100%">
         <a-row justify="center">
-          <div class="christmas">
-            <img
-              src="../assets/christmas-hat.png"
-              :alt="t('ui.christmas')"
-              :title="t('ui.christmas')"
-              class="christmas-hat"
-            >
-          </div>
           <Logo />
         </a-row>
         <a-row justify="center">
@@ -255,16 +247,6 @@ export default {
   transition: 0.15s ease-in-out;
 }
 
-.christmas {
-  position: absolute;
-  transform: translate(100px, -50%);
-}
-
-.christmas-hat {
-   width: 91px;
-  animation: christmas 2s ease-in infinite alternate;
-}
-
 @media screen and (min-width: 768px) {
   .audio-visual-music canvas,
   .audio-visual-airport canvas {
@@ -305,27 +287,5 @@ export default {
   100% {
     box-shadow: 0 0 35px 12px rgba(85, 98, 212, 0.4);
   }
-}
-
-@keyframes christmas {
-  0% {
-    transform: rotate(0deg)
-  }
-  20% {
-    transform: rotate(5deg)
-  }
-  40% {
-    transform: rotate(-5deg)
-  }
-  60% {
-    transform: rotate(10deg)
-  }
-  80% {
-    transform: rotate(-10deg)
-  }
-  100% {
-    transform: rotate(0deg)
-  }
-
 }
 </style>
