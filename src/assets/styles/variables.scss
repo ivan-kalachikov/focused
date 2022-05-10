@@ -1,0 +1,20 @@
+// main colors
+$primary: #313da9;
+$secondary: #45444b;
+$accent: lighten($primary, 5); //#3949D3;
+$warning: #5e2551;
+
+// background colors
+$primary-background: #191921; // body
+$secondary-background: #23232c; // footer
+
+// text colors
+$text-color-primary: #eeeeee;
+$text-color-secondary: #dadada;
+$text-color-tertiary: #bbbbbb;
+
+// icon colors
+$icon-color: $secondary;
+
+// borders
+$border-width: 1.5px;
