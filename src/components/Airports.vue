@@ -1,21 +1,31 @@
 <template>
-  <a-col :xs="{ span: 22 }" :md="{ span: 11 }" :xl="{ span: 7 }" :xxl="{ span: 5 }">
+  <a-col :xs="{ span: 22 }"
+         :md="{ span: 11 }"
+         :xl="{ span: 7 }"
+         :xxl="{ span: 5 }"
+  >
     <a-card :bordered="false">
-      <a-row :gutter="16" justify="start">
-        <a-col flex="55px" :class="['icon-wrapper', airportsStatus === 'failed' && 'error']">
-          <Spinner v-if="airportsStatus === 'pending' && appStatus === 'playing'" class="spinner" />
+      <a-row :gutter="16"
+             justify="start"
+      >
+        <a-col flex="55px"
+               :class="['icon-wrapper', airportsStatus === 'failed' && 'error']"
+        >
+          <Spinner v-if="airportsStatus === 'pending' && appStatus === 'playing'"
+                   class="spinner"
+          />
           <airportIcon />
         </a-col>
         <a-col flex="auto">
           <a-select
             size="large"
             show-search
-            optionFilterProp="name"
+            option-filter-prop="name"
             :placeholder="t('ui.selectAirport')"
             style="width: 100%"
             :filter-option="true"
-            @change="handleChange"
             :default-value="currentAirportCode"
+            @change="handleChange"
           >
             <a-select-option
               v-for="item in airports"
@@ -24,13 +34,13 @@
               :name="item.city"
               :title="item.airport"
             >
-              <span >
+              <span>
                 <img
                   class="country"
                   width="32"
                   height="24"
                   :src="`https://flagcdn.com/32x24/${item.countryCode}.png`"
-                />
+                >
                 {{ item.city }}
                 <span class="ant-typography ant-typography-secondary">({{ item.codeIATA }})</span>
               </span>
@@ -41,12 +51,12 @@
       <a-row>
         <a-col flex="100%">
           <a-slider
-            @change="handleVolumeChange"
             :default-value="85"
-            tooltipPlacement="bottom"
+            tooltip-placement="bottom"
             :disabled="airportsStatus === 'failed'"
+            @change="handleVolumeChange"
           />
-          </a-col>
+        </a-col>
       </a-row>
     </a-card>
   </a-col>
@@ -55,8 +65,8 @@
 <script>
 import { mapState, mapMutations } from 'vuex';
 import { useI18n } from 'vue-i18n';
-import airportIcon from '../assets/airport.svg';
-import Spinner from '../assets/tail-spin.svg';
+import airportIcon from '../assets/images/airport.svg';
+import Spinner from '../assets/images/tail-spin.svg';
 
 export default {
   name: 'Airports',
@@ -65,6 +75,10 @@ export default {
     Spinner,
   },
   props: ['audio'],
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   beforeUpdate() {
     this.audio.addEventListener('waiting', this.setPending);
     this.audio.addEventListener('emptied', this.setPending);
@@ -74,10 +88,6 @@ export default {
     this.audio.removeEventListener('waiting', this.setPending);
     this.audio.removeEventListener('emptied', this.setPending);
     this.audio.removeEventListener('loadeddata', this.setReady);
-  },
-  setup() {
-    const { t } = useI18n();
-    return { t };
   },
   computed: mapState({
     airports: (state) => state.airports.list,

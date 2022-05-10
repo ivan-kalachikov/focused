@@ -1,21 +1,31 @@
 <template>
-  <a-col :xs="{ span: 22 }" :md="{ span: 11 }" :xl="{ span: 7 }" :xxl="{ span: 5 }">
+  <a-col :xs="{ span: 22 }"
+         :md="{ span: 11 }"
+         :xl="{ span: 7 }"
+         :xxl="{ span: 5 }"
+  >
     <a-card :bordered="false">
-      <a-row :gutter="16" justify="start">
-        <a-col flex="55px" :class="['icon-wrapper', musicStatus === 'failed' && 'error']">
-          <Spinner v-if="musicStatus === 'pending' && appStatus === 'playing'" class="spinner" />
+      <a-row :gutter="16"
+             justify="start"
+      >
+        <a-col flex="55px"
+               :class="['icon-wrapper', musicStatus === 'failed' && 'error']"
+        >
+          <Spinner v-if="musicStatus === 'pending' && appStatus === 'playing'"
+                   class="spinner"
+          />
           <musicIcon />
         </a-col>
         <a-col flex="auto">
           <a-select
             size="large"
             show-search
-            optionFilterProp="name"
+            option-filter-prop="name"
             :placeholder="t('ui.selectMusic')"
             style="width: 100%"
             :filter-option="true"
-            @change="handleChange"
             :default-value="currentMusicId"
+            @change="handleChange"
           >
             <a-select-option
               v-for="item in music"
@@ -25,7 +35,10 @@
               :title="item.description"
             >
               <span v-if="item">
-                <img width="40" height="40" :src="item.imageUrl" />
+                <img width="40"
+                     height="40"
+                     :src="item.imageUrl"
+                >
                 {{ item.name }}
               </span>
             </a-select-option>
@@ -35,12 +48,12 @@
       <a-row>
         <a-col flex="100%">
           <a-slider
-            @change="handleVolumeChange"
             :default-value="100"
-            tooltipPlacement="bottom"
+            tooltip-placement="bottom"
             :disabled="musicStatus === 'failed'"
+            @change="handleVolumeChange"
           />
-          </a-col>
+        </a-col>
       </a-row>
     </a-card>
   </a-col>
@@ -49,16 +62,16 @@
 <script>
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
-import musicIcon from '../assets/music.svg';
-import Spinner from '../assets/tail-spin.svg';
+import musicIcon from '../assets/images/music.svg';
+import Spinner from '../assets/images/tail-spin.svg';
 
 export default {
   name: 'Music',
+  props: ['audio'],
   setup() {
     const { t } = useI18n();
     return { t };
   },
-  props: ['audio'],
   beforeUpdate() {
     this.audio.addEventListener('waiting', this.setPending);
     this.audio.addEventListener('emptied', this.setPending);

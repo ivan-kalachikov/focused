@@ -55,11 +55,10 @@
 <script>
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
-import { message } from 'ant-design-vue';
 import { safePause, safePlay, safeLoad } from '../utilites';
 import Airports from './Airports.vue';
 import Music from './Music.vue';
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/images/logo.svg';
 
 export default {
   name: 'Main',
@@ -99,16 +98,16 @@ export default {
     },
     MusicError(newVal) {
       if (newVal) {
-        message.error(newVal, () => {
-          this.setMusicError(null);
-        });
+        // message.error(newVal, () => {
+        //   this.setMusicError(null);
+        // });
       }
     },
     AirportsError(newVal) {
       if (newVal) {
-        message.error(newVal, () => {
-          this.setAirportError(null);
-        });
+        // message.error(newVal, () => {
+        //   this.setAirportError(null);
+        // });
       }
     },
   },
@@ -169,7 +168,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .main {
   display: flex;
   align-items: center;
