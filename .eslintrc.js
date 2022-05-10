@@ -4,15 +4,15 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:vue/essential',
     'airbnb-base',
+    'plugin:vue/recommended',
+    'plugin:vue/essential',
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    ecmaVersion: 2018,
     sourceType: 'module',
   },
   plugins: [
@@ -30,5 +30,6 @@ module.exports = {
     ],
     'vue/no-multiple-template-root': 0,
     'vue/no-mutating-props': 0,
+    'vue/multi-word-component-names': 0,
   },
 };

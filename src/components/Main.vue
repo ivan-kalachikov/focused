@@ -1,17 +1,17 @@
 <template>
   <audio
     ref="musicPlayer"
-    @error="musicErrorHandler"
-    @play="musicPlayHandler"
     :src="currentMusicUrl"
     crossorigin="anonymous"
+    @error="musicErrorHandler"
+    @play="musicPlayHandler"
   />
   <audio
     ref="airportPlayer"
-    @error="airportErrorHandler"
-    @play="airportPlayHandler"
     :src="currentAirportUrl"
     crossorigin="anonymous"
+    @error="airportErrorHandler"
+    @play="airportPlayHandler"
   />
   <av-line
     class="audio-visual-music"
@@ -31,33 +31,25 @@
     :canv-height="282"
     :fft-size="512"
   />
-  <a-layout-content class="content">
-    <a-row
-      align="middle"
-      justify="center"
-      class="container"
-    >
-      <a-col flex="100%">
-        <a-row justify="center">
-          <Logo />
-        </a-row>
-        <a-row justify="center">
-          <div
-            :class="['playpause', appStatus === 'playing' ? 'playing' : '']"
-            @click="toggleAppStatus()"
-            :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
-          ></div>
-        </a-row>
-        <a-row
-          :gutter="[24, 12]"
-          justify="center"
-        >
-          <Music :audio="this.$refs.musicPlayer" />
-          <Airports :audio="this.$refs.airportPlayer" />
-        </a-row>
-      </a-col>
-    </a-row>
-  </a-layout-content>
+  <section class="main">
+    <div class="container">
+      <div class="logo-wrapper">
+        <Logo />
+      </div>
+      <div
+        :class="[
+          'playpause',
+          {'playing' : appStatus === 'playing'}
+        ]"
+        :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
+        @click="toggleAppStatus"
+      />
+      <div class="sources">
+        <Music :audio="$refs.musicPlayer" />
+        <Airports :audio="$refs.airportPlayer" />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -178,7 +170,7 @@ export default {
 </script>
 
 <style>
-.content {
+.main {
   display: flex;
   align-items: center;
   justify-content: center;
