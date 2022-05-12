@@ -1,23 +1,27 @@
 <template>
-  <a-col :xs="{ span: 22 }"
-         :md="{ span: 11 }"
-         :xl="{ span: 7 }"
-         :xxl="{ span: 5 }"
+  <a-col
+    :xs="{ span: 22 }"
+    :md="{ span: 11 }"
+    :xl="{ span: 7 }"
+    :xxl="{ span: 5 }"
   >
     <a-card :bordered="false">
-      <a-row :gutter="16"
-             justify="start"
+      <a-row
+        :gutter="16"
+        justify="start"
       >
-        <a-col flex="55px"
-               :class="['icon-wrapper', airportsStatus === 'failed' && 'error']"
+        <a-col
+          flex="55px"
+          :class="['icon-wrapper', airportsStatus === 'failed' && 'error']"
         >
-          <Spinner v-if="airportsStatus === 'pending' && appStatus === 'playing'"
-                   class="spinner"
+          <Spinner
+            v-if="airportsStatus === 'pending' && appStatus === 'playing'"
+            class="spinner"
           />
           <airportIcon />
         </a-col>
         <a-col flex="auto">
-          <a-select
+          <el-select
             size="large"
             show-search
             option-filter-prop="name"
@@ -27,7 +31,7 @@
             :default-value="currentAirportCode"
             @change="handleChange"
           >
-            <a-select-option
+            <el-option
               v-for="item in airports"
               :key="item.urlPostfix"
               :value="item.codeIATA"
@@ -44,13 +48,13 @@
                 {{ item.city }}
                 <span class="ant-typography ant-typography-secondary">({{ item.codeIATA }})</span>
               </span>
-            </a-select-option>
-          </a-select>
+            </el-option>
+          </el-select>
         </a-col>
       </a-row>
       <a-row>
         <a-col flex="100%">
-          <a-slider
+          <el-slider
             :default-value="85"
             tooltip-placement="bottom"
             :disabled="airportsStatus === 'failed'"

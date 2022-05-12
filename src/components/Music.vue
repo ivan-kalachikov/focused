@@ -1,23 +1,27 @@
 <template>
-  <a-col :xs="{ span: 22 }"
-         :md="{ span: 11 }"
-         :xl="{ span: 7 }"
-         :xxl="{ span: 5 }"
+  <a-col
+    :xs="{ span: 22 }"
+    :md="{ span: 11 }"
+    :xl="{ span: 7 }"
+    :xxl="{ span: 5 }"
   >
     <a-card :bordered="false">
-      <a-row :gutter="16"
-             justify="start"
+      <a-row
+        :gutter="16"
+        justify="start"
       >
-        <a-col flex="55px"
-               :class="['icon-wrapper', musicStatus === 'failed' && 'error']"
+        <a-col
+          flex="55px"
+          :class="['icon-wrapper', musicStatus === 'failed' && 'error']"
         >
-          <Spinner v-if="musicStatus === 'pending' && appStatus === 'playing'"
-                   class="spinner"
+          <Spinner
+            v-if="musicStatus === 'pending' && appStatus === 'playing'"
+            class="spinner"
           />
           <musicIcon />
         </a-col>
         <a-col flex="auto">
-          <a-select
+          <el-select
             size="large"
             show-search
             option-filter-prop="name"
@@ -27,7 +31,7 @@
             :default-value="currentMusicId"
             @change="handleChange"
           >
-            <a-select-option
+            <el-option
               v-for="item in music"
               :key="item.id"
               :value="item.id"
@@ -35,19 +39,20 @@
               :title="item.description"
             >
               <span v-if="item">
-                <img width="40"
-                     height="40"
-                     :src="item.imageUrl"
+                <img
+                  width="40"
+                  height="40"
+                  :src="item.imageUrl"
                 >
                 {{ item.name }}
               </span>
-            </a-select-option>
-          </a-select>
+            </el-option>
+          </el-select>
         </a-col>
       </a-row>
       <a-row>
         <a-col flex="100%">
-          <a-slider
+          <el-slider
             :default-value="100"
             tooltip-placement="bottom"
             :disabled="musicStatus === 'failed'"

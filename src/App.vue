@@ -1,13 +1,14 @@
 <template>
-  <a-layout class="layout">
+  <section class="layout">
     <Main />
     <Footer />
-  </a-layout>
+  </section>
 </template>
 
 <script>
 import Main from './components/Main.vue';
 import Footer from './components/Footer.vue';
+import 'element-plus/theme-chalk/dark/css-vars.css';
 
 export default {
   name: 'App',
@@ -18,14 +19,19 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:global(body) {
+  background-color: $primary-background;
+}
+
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #4d9dee;
   height: 100%;
+  color: $text-color-primary;
 }
 
 .layout {
