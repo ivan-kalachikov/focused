@@ -39,7 +39,7 @@
     >
       <a-col flex="100%">
         <a-row justify="center">
-          <div class="christmas">
+          <div v-if="isChristmasTime" class="christmas">
             <img
               src="../assets/christmas-hat.png"
               :alt="t('ui.christmas')"
@@ -85,13 +85,25 @@ export default {
       t, safePause, safePlay, safeLoad,
     };
   },
-  computed: mapState({
-    appStatus: (state) => state.appStatus,
-    currentMusicUrl: (state) => state.music.currentUrl,
-    currentAirportUrl: (state) => state.airports.currentUrl,
-    MusicError: (state) => state.music.error,
-    AirportsError: (state) => state.airports.error,
-  }),
+  computed: {
+    ...mapState({
+      AirportsError: (state) => state.airports.error,
+      appStatus: (state) => state.appStatus,
+      currentAirportUrl: (state) => state.airports.currentUrl,
+      currentMusicUrl: (state) => state.music.currentUrl,
+      MusicError: (state) => state.music.error,
+    }),
+    isChristmasTime() {
+      // eslint-disable-next-line no-debugger
+      debugger;
+      const currentDate = Date.now();
+      const currentYear = new Date().getFullYear();
+      const currentMonth = new Date().getMonth();
+      const christmasStart = new Date(`${currentMonth === 11 ? currentYear : currentYear - 1}-12-20`).getTime();
+      const christmasEnd = new Date(`${currentMonth === 0 ? currentYear : currentYear + 1}-01-10`).getTime();
+      return currentDate > christmasStart && currentDate < christmasEnd;
+    },
+  },
   watch: {
     appStatus(newVal) {
       if (newVal === 'playing') {
