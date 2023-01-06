@@ -1,4 +1,27 @@
 const messages = {
+  en: {
+    authors: {
+      emelyanova: 'Emelianova Tatiana',
+      kalachikov: 'Ivan Kalachikov',
+    },
+    ui: {
+      about: 'About the project',
+      aboutText: 'Ambient music and air-traffic-controls talks - sounds engaging, helps to concentrate',
+      airportPlayError: 'Radio talks can\'t be loaded - check your internet connection, select other chanel or refresh the page',
+      christmas: 'Merry Christmas and Happy New Year! Thanks for visiting!',
+      designBy: 'Design by: ',
+      forDispatcherTalks: ' - for radio talks',
+      forMusic: ' - for music',
+      frontendBy: 'Frontend by: ',
+      inspiredBy: 'Inspired by: ',
+      musicPlayError: 'Music can\'t be loaded - check your internet connection, select other chanel or refresh the page',
+      pause: 'Pause',
+      play: 'Play',
+      selectAirport: 'Select Airport',
+      selectMusic: 'Select Music',
+      thanksTo: 'Thanks: ',
+    },
+  },
   ru: {
     ui: {
       christmas: 'С наступающим Новым Годом и Рождеством! Спасибо что заходите!',

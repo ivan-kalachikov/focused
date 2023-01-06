@@ -94,8 +94,6 @@ export default {
       MusicError: (state) => state.music.error,
     }),
     isChristmasTime() {
-      // eslint-disable-next-line no-debugger
-      debugger;
       const currentDate = Date.now();
       const currentYear = new Date().getFullYear();
       const currentMonth = new Date().getMonth();
