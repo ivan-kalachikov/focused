@@ -97,9 +97,9 @@ export default {
       const currentDate = Date.now();
       const currentYear = new Date().getFullYear();
       const currentMonth = new Date().getMonth();
-      const christmasStart = new Date(`${currentMonth === 11 ? currentYear : currentYear - 1}-12-20`).getTime();
-      const christmasEnd = new Date(`${currentMonth === 0 ? currentYear : currentYear + 1}-01-10`).getTime();
-      return currentDate > christmasStart && currentDate < christmasEnd;
+      const christmasStart = new Date(`${currentMonth === 11 ? currentYear : currentYear + 1}-12-20`).getTime();
+      const christmasEnd = Date(christmasStart + 60 * 60 * 24 * 20 * 1000);
+      return (currentDate > christmasStart) && (currentDate < christmasEnd);
     },
   },
   watch: {
