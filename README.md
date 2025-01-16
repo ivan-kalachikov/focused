@@ -23,6 +23,8 @@ Ensure you have the following installed:
 
 ### Installation
 
+Needs installed `node v14.18.0 (npm v6.14.15)`.
+
 1. Clone the repository
 
    ```sh
