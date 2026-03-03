@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/radio/:path*",
+      "destination": "https://s1-fmt2.liveatc.net/:path*"
+    }
+  ]
+}
