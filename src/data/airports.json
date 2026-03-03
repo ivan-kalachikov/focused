@@ -1,21 +1,147 @@
 [
     {
-        "urlPostfix": "uuee3",
-        "codeICAO": "UUEE",
-        "city": "Moscow",
-        "country": "Russia",
-        "codeIATA": "SVO",
-        "airport": "Sheremetyevo - A.S. Pushkin international airport",
-        "countryCode": "ru"
+        "urlPostfix": "obbi",
+        "codeICAO": "OBBI",
+        "city": "Muharraq",
+        "country": "Bahrain",
+        "codeIATA": "BAH",
+        "airport": "Bahrain International Airport",
+        "countryCode": "bh"
     },
     {
-        "urlPostfix": "urss",
-        "codeICAO": "URSS",
-        "city": "Sochi",
-        "country": "Russia",
-        "codeIATA": "AER",
-        "airport": "Sochi International Airport",
-        "countryCode": "ru"
+        "urlPostfix": "lbsf_ctl_east",
+        "codeICAO": "LBSF",
+        "city": "Sofia",
+        "country": "Bulgaria",
+        "codeIATA": "SOF",
+        "airport": "Sofia Airport",
+        "countryCode": "bg"
+    },
+    {
+        "urlPostfix": "lfbd_bordeaux",
+        "codeICAO": "LFBD",
+        "city": "Bordeaux",
+        "country": "France",
+        "codeIATA": "BOD",
+        "airport": "Bordeaux Airport",
+        "countryCode": "fr"
+    },
+    {
+        "urlPostfix": "lfpo3_app",
+        "codeICAO": "LFPO",
+        "city": "Paris",
+        "country": "France",
+        "codeIATA": "ORY",
+        "airport": "Paris Orly Airport",
+        "countryCode": "fr"
+    },
+    {
+        "urlPostfix": "vhhh5",
+        "codeICAO": "VHHH",
+        "city": "Hong Kong",
+        "country": "Hong Kong",
+        "codeIATA": "HKG",
+        "airport": "Hong Kong International Airport",
+        "countryCode": "hk"
+    },
+    {
+        "urlPostfix": "lhbp_app_e",
+        "codeICAO": "LHCC",
+        "city": "Budapest",
+        "country": "Hungary",
+        "codeIATA": "BUD",
+        "airport": "Budapest Airport",
+        "countryCode": "hu"
+    },
+    {
+        "urlPostfix": "eidw3",
+        "codeICAO": "EIDW",
+        "city": "Dublin",
+        "country": "Ireland",
+        "codeIATA": "DUB",
+        "airport": "Dublin Airport",
+        "countryCode": "ie"
+    },
+    {
+        "urlPostfix": "rjtt_twr",
+        "codeICAO": "RJTT",
+        "city": "Tokyo",
+        "country": "Japan",
+        "codeIATA": "HND",
+        "airport": "Tokyo Haneda Airport",
+        "countryCode": "jp"
+    },
+    {
+        "urlPostfix": "eyvi",
+        "codeICAO": "EYVI",
+        "city": "Vilnius",
+        "country": "Lithuania",
+        "codeIATA": "VNO",
+        "airport": "Vilnius Airport",
+        "countryCode": "lt"
+    },
+    {
+        "urlPostfix": "mmmx2",
+        "codeICAO": "MMMX",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "codeIATA": "MEX",
+        "airport": "Mexico City International Airport",
+        "countryCode": "mx"
+    },
+    {
+        "urlPostfix": "eham_twr_042218l36r",
+        "codeICAO": "EHAM",
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "codeIATA": "AMS",
+        "airport": "Amsterdam Airport Schiphol",
+        "countryCode": "nl"
+    },
+    {
+        "urlPostfix": "ehbk1_twr",
+        "codeICAO": "EHBK",
+        "city": "Beek",
+        "country": "Netherlands",
+        "codeIATA": "MST",
+        "airport": "Maastricht Aachen Airport",
+        "countryCode": "nl"
+    },
+    {
+        "urlPostfix": "eneg2",
+        "codeICAO": "ENGM",
+        "city": "Oslo",
+        "country": "Norway",
+        "codeIATA": "OSL",
+        "airport": "Oslo Airport",
+        "countryCode": "no"
+    },
+    {
+        "urlPostfix": "rpll",
+        "codeICAO": "RPLL",
+        "city": "Manila",
+        "country": "Philippines",
+        "codeIATA": "MNL",
+        "airport": "Ninoy Aquino International Airport",
+        "countryCode": "ph"
+    },
+    {
+        "urlPostfix": "lppt_app_1191_2",
+        "codeICAO": "LPPT",
+        "city": "Lisbon",
+        "country": "Portugal",
+        "codeIATA": "LIS",
+        "airport": "Lisbon Airport",
+        "countryCode": "pt"
+    },
+    {
+        "urlPostfix": "lrop",
+        "codeICAO": "LROP",
+        "city": "Bucharest",
+        "country": "Romania",
+        "codeIATA": "OTP",
+        "airport": "Henri Coanda International Airport",
+        "countryCode": "ro"
     },
     {
         "urlPostfix": "urkk",
@@ -24,6 +150,15 @@
         "country": "Russia",
         "codeIATA": "KRR",
         "airport": "Krasnodar Pashkovskiy Airport",
+        "countryCode": "ru"
+    },
+    {
+        "urlPostfix": "uuee3",
+        "codeICAO": "UUEE",
+        "city": "Moscow",
+        "country": "Russia",
+        "codeIATA": "SVO",
+        "airport": "Sheremetyevo - A.S. Pushkin international airport",
         "countryCode": "ru"
     },
     {
@@ -45,40 +180,22 @@
         "countryCode": "ru"
     },
     {
-        "urlPostfix": "ehbk1_twr",
-        "codeICAO": "EHBK",
-        "city": "Beek",
-        "country": "Netherlands",
-        "codeIATA": "MST",
-        "airport": "Maastricht Aachen Airport",
-        "countryCode": "nl"
+        "urlPostfix": "urss",
+        "codeICAO": "URSS",
+        "city": "Sochi",
+        "country": "Russia",
+        "codeIATA": "AER",
+        "airport": "Sochi International Airport",
+        "countryCode": "ru"
     },
     {
-        "urlPostfix": "eidw3",
-        "codeICAO": "EIDW",
-        "city": "Dublin",
-        "country": "Ireland",
-        "codeIATA": "DUB",
-        "airport": "Dublin Airport",
-        "countryCode": "ie"
-    },
-    {
-        "urlPostfix": "eneg2",
-        "codeICAO": "ENGM",
-        "city": "Oslo",
-        "country": "Norway",
-        "codeIATA": "OSL",
-        "airport": "Oslo Airport",
-        "countryCode": "no"
-    },
-    {
-        "urlPostfix": "esow",
-        "codeICAO": "ESOW",
-        "city": "Stockholm",
-        "country": "Sweden",
-        "codeIATA": "ARN",
-        "airport": "Stockholm Arlanda Airport",
-        "countryCode": "se"
+        "urlPostfix": "wsss3",
+        "codeICAO": "WSSS",
+        "city": "Singapore",
+        "country": "Singapore",
+        "codeIATA": "SIN",
+        "airport": "Singapore Changi Airport",
+        "countryCode": "sg"
     },
     {
         "urlPostfix": "essl",
@@ -90,75 +207,102 @@
         "countryCode": "se"
     },
     {
-        "urlPostfix": "eyvi",
-        "codeICAO": "EYVI",
-        "city": "Vilnius",
-        "country": "Lithuania",
-        "codeIATA": "VNO",
-        "airport": "Vilnius Airport",
-        "countryCode": "lt"
+        "urlPostfix": "esow",
+        "codeICAO": "ESOW",
+        "city": "Stockholm",
+        "country": "Sweden",
+        "codeIATA": "ARN",
+        "airport": "Stockholm Arlanda Airport",
+        "countryCode": "se"
     },
     {
-        "urlPostfix": "lbsf_ctl_east",
-        "codeICAO": "LBSF",
-        "city": "Sofia",
-        "country": "Bulgaria",
-        "codeIATA": "SOF",
-        "airport": "Sofia Airport",
-        "countryCode": "bg"
+        "urlPostfix": "lszh1_twr",
+        "codeICAO": "LSZH",
+        "city": "Zurich",
+        "country": "Switzerland",
+        "codeIATA": "ZRH",
+        "airport": "Zurich Airport",
+        "countryCode": "ch"
     },
     {
-        "urlPostfix": "lfpo3_app",
-        "codeICAO": "LFPO",
-        "city": "Paris",
-        "country": "France",
-        "codeIATA": "ORY",
-        "airport": "Paris Orly Airport",
-        "countryCode": "fr"
+        "urlPostfix": "katl_twr",
+        "codeICAO": "KATL",
+        "city": "Atlanta",
+        "country": "United States",
+        "codeIATA": "ATL",
+        "airport": "Hartsfield-Jackson Atlanta International Airport",
+        "countryCode": "us"
     },
     {
-        "urlPostfix": "lfbd_bordeaux",
-        "codeICAO": "LFBD",
-        "city": "Bordeaux",
-        "country": "France",
-        "codeIATA": "BOD",
-        "airport": "Bordeaux Airport",
-        "countryCode": "fr"
+        "urlPostfix": "kbos_twr",
+        "codeICAO": "KBOS",
+        "city": "Boston",
+        "country": "United States",
+        "codeIATA": "BOS",
+        "airport": "Boston Logan International Airport",
+        "countryCode": "us"
     },
     {
-        "urlPostfix": "lhbp_app_e",
-        "codeICAO": "LHCC",
-        "city": "Budapest",
-        "country": "Hungary",
-        "codeIATA": "BUD",
-        "airport": "Budapest Airport",
-        "countryCode": "hu"
+        "urlPostfix": "kdfw1_twr1_e",
+        "codeICAO": "KDFW",
+        "city": "Dallas",
+        "country": "United States",
+        "codeIATA": "DFW",
+        "airport": "Dallas/Fort Worth International Airport",
+        "countryCode": "us"
     },
     {
-        "urlPostfix": "mmmx2",
-        "codeICAO": "MMMX",
-        "city": "Mexico City",
-        "country": "Mexico",
-        "codeIATA": "MEX",
-        "airport": "Mexico City International Airport",
-        "countryCode": "mx"
+        "urlPostfix": "kiah1_1",
+        "codeICAO": "KIAH",
+        "city": "Houston",
+        "country": "United States",
+        "codeIATA": "IAH",
+        "airport": "George Bush Intercontinental Airport",
+        "countryCode": "us"
+    },
+    {
+        "urlPostfix": "klax_twr",
+        "codeICAO": "KLAX",
+        "city": "Los Angeles",
+        "country": "United States",
+        "codeIATA": "LAX",
+        "airport": "Los Angeles International Airport",
+        "countryCode": "us"
+    },
+    {
+        "urlPostfix": "kewr_twr",
+        "codeICAO": "KEWR",
+        "city": "Newark",
+        "country": "United States",
+        "codeIATA": "EWR",
+        "airport": "Newark Liberty International Airport",
+        "countryCode": "us"
+    },
+    {
+        "urlPostfix": "kjfk_twr",
+        "codeICAO": "KJFK",
+        "city": "New York JFK",
+        "country": "United States",
+        "codeIATA": "JFK",
+        "airport": "John F. Kennedy International Airport",
+        "countryCode": "us"
     },
     {
         "urlPostfix": "khpn_atis2",
         "codeICAO": "KHPN",
-        "city": "New York",
-        "country": "Mexico",
+        "city": "New York HPN",
+        "country": "United States",
         "codeIATA": "HPN",
         "airport": "Westchester County Airport",
         "countryCode": "us"
     },
     {
-        "urlPostfix": "obbi",
-        "codeICAO": "OBBI",
-        "city": "Muharraq",
-        "country": "Bahrain",
-        "codeIATA": "BAH",
-        "airport": "Bahrain International Airport",
-        "countryCode": "bh"
+        "urlPostfix": "ksfo_twr",
+        "codeICAO": "KSFO",
+        "city": "San Francisco",
+        "country": "United States",
+        "codeIATA": "SFO",
+        "airport": "San Francisco International Airport",
+        "countryCode": "us"
     }
 ]
