@@ -1,55 +1,45 @@
 <template>
-  <a-col :xs="{ span: 22 }" :md="{ span: 11 }" :xl="{ span: 7 }" :xxl="{ span: 5 }">
-    <a-card :bordered="false">
-      <a-row :gutter="16" justify="start">
-        <a-col flex="55px" :class="['icon-wrapper', airportsStatus === 'failed' && 'error']">
+  <div class="card-col">
+    <div class="card">
+      <div class="card-header">
+        <div :class="['icon-wrapper', airportsStatus === 'failed' && 'error']">
           <Spinner v-if="airportsStatus === 'pending' && appStatus === 'playing'" class="spinner" />
           <airportIcon />
-        </a-col>
-        <a-col flex="auto">
-          <a-select
-            size="large"
-            show-search
-            optionFilterProp="name"
-            :placeholder="t('ui.selectAirport')"
-            style="width: 100%"
-            :filter-option="true"
-            @change="handleChange"
-            :default-value="currentAirportCode"
-          >
-            <a-select-option
-              v-for="item in airports"
-              :key="item.urlPostfix"
-              :value="item.codeIATA"
-              :name="item.city"
-              :title="item.airport"
-            >
-              <span >
-                <img
-                  class="country"
-                  width="32"
-                  height="24"
-                  :src="`https://flagcdn.com/32x24/${item.countryCode}.png`"
-                />
-                {{ item.city }}
-                <span class="ant-typography ant-typography-secondary">({{ item.codeIATA }})</span>
-              </span>
-            </a-select-option>
-          </a-select>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col flex="100%">
-          <a-slider
-            @change="handleVolumeChange"
-            :default-value="85"
-            tooltipPlacement="bottom"
-            :disabled="airportsStatus === 'failed'"
-          />
-          </a-col>
-      </a-row>
-    </a-card>
-  </a-col>
+        </div>
+        <CustomSelect
+          :options="airports"
+          :model-value="currentAirportCode"
+          value-key="codeIATA"
+          label-key="city"
+          filter-key="city"
+          :placeholder="t('ui.selectAirport')"
+          @update:model-value="handleChange"
+        >
+          <template #selected="{ option }">
+            {{ option.city }} ({{ option.codeIATA }})
+          </template>
+          <template #option="{ option }">
+            <img
+              :src="`https://flagcdn.com/32x24/${option.countryCode}.png`"
+              width="32"
+              height="24"
+              :alt="option.country"
+            />
+            <span>{{ option.city }} <span class="text-secondary">({{ option.codeIATA }})</span></span>
+          </template>
+        </CustomSelect>
+      </div>
+      <input
+        type="range"
+        class="slider"
+        min="0"
+        max="100"
+        value="85"
+        @input="handleVolumeChange(Number($event.target.value))"
+        :disabled="airportsStatus === 'failed'"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -57,12 +47,14 @@ import { mapState, mapMutations } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import airportIcon from '../assets/airport.svg';
 import Spinner from '../assets/tail-spin.svg';
+import CustomSelect from './CustomSelect.vue';
 
 export default {
   name: 'Airports',
   components: {
     airportIcon,
     Spinner,
+    CustomSelect,
   },
   props: ['audio'],
   beforeUpdate() {
@@ -108,33 +100,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.ant-select-item-option-content .country {
-  width: 32px;
-  height: 24px;
-  margin-right: 5px;
-}
-
-.ant-select-selection-item img {
-  display: none;
-}
-
-.icon-wrapper {
-  position: relative;
-}
-
-.icon-wrapper.error path {
-  fill: #6f2b39;
-}
-
-.icon-wrapper.error circle {
-  stroke: #6f2b39;
-}
-
-.spinner {
-  position: absolute;
-  top: -1px;
-  left: 7px;
-}
-</style>

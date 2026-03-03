@@ -1,18 +1,14 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es2020: true,
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     'airbnb-base',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: [
@@ -30,5 +26,8 @@ module.exports = {
     ],
     'vue/no-multiple-template-root': 0,
     'vue/no-mutating-props': 0,
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

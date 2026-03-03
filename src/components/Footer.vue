@@ -1,71 +1,41 @@
 <template>
-  <a-layout-footer>
-    <a-row justify="space-between">
-      <a-col :xs="{ span: 24 }" :md="{ span: 11 }" :xl="{ span: 8 }">
-        <a-typography-paragraph>
-          <a-typography-text>{{ t('ui.inspiredBy') }}</a-typography-text>
-          <a-typography-link
-            type="secondary"
-            href="https://listentothe.cloud"
-            target="_blank"
-            rel="noopener"
-            >https://listentothe.cloud</a-typography-link
-          >
-        </a-typography-paragraph>
-        <a-typography-paragraph>
-          <a-typography-text>{{ t('ui.thanksTo') }}</a-typography-text>
-          <a-typography-link
-            type="secondary"
-            href="https://somafm.com"
-            target="_blank"
-            rel="noopener"
-            >https://somafm.com</a-typography-link
-          >{{ t('ui.forMusic') }}
-        </a-typography-paragraph>
-        <a-typography-paragraph>
-          <a-typography-link
-            type="secondary"
-            href="https://www.liveatc.net"
-            target="_blank"
-            rel="noopener"
-            >https://www.liveatc.net</a-typography-link
-          >{{ t('ui.forDispatcherTalks') }}
-        </a-typography-paragraph>
-      </a-col>
-      <a-col :xs="{ span: 24 }" :md="{ span: 11 }" :xl="{ span: 8 }" align="right">
-        <a-popover class="about" placement="topRight">
-          <template v-slot:content>
-            <slot>
-              <p>{{ t('ui.aboutText') }}</p>
-            </slot>
-          </template>
-          <a-typography-paragraph>
+  <footer class="footer">
+    <div class="footer-row">
+      <div class="footer-col">
+        <p>
+          <span>{{ t('ui.inspiredBy') }}</span>
+          <a href="https://listentothe.cloud" target="_blank" rel="noopener">https://listentothe.cloud</a>
+        </p>
+        <p>
+          <span>{{ t('ui.thanksTo') }}</span>
+          <a href="https://somafm.com" target="_blank" rel="noopener">https://somafm.com</a>
+          {{ t('ui.forMusic') }}
+        </p>
+        <p>
+          <a href="https://www.liveatc.net" target="_blank" rel="noopener">https://www.liveatc.net</a>
+          {{ t('ui.forDispatcherTalks') }}
+        </p>
+      </div>
+      <div class="footer-col footer-col--right">
+        <div class="about-wrapper">
+          <p class="about-toggle" @click="showAbout = !showAbout">
             {{ t('ui.about') }}
-          </a-typography-paragraph>
-        </a-popover>
-        <a-typography-paragraph>
-          <a-typography-text>{{ t('ui.frontendBy') }}</a-typography-text>
-          <a-typography-link
-            type="secondary"
-            href="https://github.com/Ivankalachikov/"
-            target="_blank"
-            rel="noopener"
-            >{{ t('authors.kalachikov') }}</a-typography-link
-          >
-        </a-typography-paragraph>
-        <a-typography-paragraph>
-          <a-typography-text>{{ t('ui.designBy') }}</a-typography-text>
-          <a-typography-link
-            type="secondary"
-            href="https://www.behance.net/tatiana_emelyanova"
-            target="_blank"
-            rel="noopener"
-            >{{ t('authors.emelyanova') }}</a-typography-link
-          >
-        </a-typography-paragraph>
-      </a-col>
-    </a-row>
-  </a-layout-footer>
+          </p>
+          <div v-if="showAbout" class="about-content">
+            <p>{{ t('ui.aboutText') }}</p>
+          </div>
+        </div>
+        <p>
+          <span>{{ t('ui.frontendBy') }}</span>
+          <a href="https://github.com/Ivankalachikov/" target="_blank" rel="noopener">{{ t('authors.kalachikov') }}</a>
+        </p>
+        <p>
+          <span>{{ t('ui.designBy') }}</span>
+          <a href="https://www.behance.net/tatiana_emelyanova" target="_blank" rel="noopener">{{ t('authors.emelyanova') }}</a>
+        </p>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -77,21 +47,81 @@ export default {
     const { t } = useI18n();
     return { t };
   },
+  data() {
+    return { showAbout: false };
+  },
 };
 </script>
 
 <style>
-.ant-layout-footer .ant-typography {
-  margin-bottom: 0;
+.footer {
+  background: #23232C;
+  padding: 24px 40px;
 }
 
-.about .ant-typography {
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 280px;
+}
+
+.footer-col--right {
+  text-align: right;
+}
+
+.footer p {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #dadada;
+}
+
+.about-wrapper {
+  position: relative;
   display: inline-block;
   margin-left: auto;
 }
 
-.ant-popover-content {
+.about-toggle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.about-toggle:hover {
+  color: #eee;
+}
+
+.about-content {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: #23242B;
+  border: 1px solid #45444B;
+  border-radius: 6px;
+  padding: 12px 16px;
   width: 380px;
   max-width: 90vw;
+  z-index: 100;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 24px 16px;
+  }
+
+  .footer-col--right {
+    text-align: left;
+  }
+
+  .about-content {
+    right: auto;
+    left: 0;
+  }
 }
 </style>
