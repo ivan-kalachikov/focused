@@ -1,7 +1,8 @@
 {
-  "functions": {
-    "api/radio/[...path].js": {
-      "maxDuration": 30
+  "rewrites": [
+    {
+      "source": "/api/radio/:path*",
+      "destination": "/api/radio/:path*"
     }
-  }
+  ]
 }
