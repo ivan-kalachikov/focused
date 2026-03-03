@@ -1,32 +1,36 @@
-export default async function handler(req, res) {
-  const { path } = req.query;
-  const target = Array.isArray(path) ? path.join('/') : path;
-  const url = `https://s1-fmt2.liveatc.net/${target}`;
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req) {
+  const url = new URL(req.url);
+  const target = url.pathname.replace(/^\/api\/radio\//, '');
+
+  if (!target) {
+    return new Response('Missing path', { status: 400 });
+  }
 
   try {
-    const upstream = await fetch(url, {
+    const upstream = await fetch(`https://s1-fmt2.liveatc.net/${target}`, {
       headers: {
         'User-Agent': 'Mozilla/5.0',
-        Referer: 'https://www.liveatc.net/',
+        'Referer': 'https://www.liveatc.net/',
       },
       redirect: 'follow',
     });
 
     if (!upstream.ok) {
-      res.status(upstream.status).end();
-      return;
+      return new Response(null, { status: upstream.status });
     }
 
-    const contentType = upstream.headers.get('content-type');
-    if (contentType) {
-      res.setHeader('Content-Type', contentType);
-    }
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'no-cache');
-
-    const buffer = Buffer.from(await upstream.arrayBuffer());
-    res.send(buffer);
-  } catch (err) {
-    res.status(502).json({ error: 'Upstream fetch failed' });
+    return new Response(upstream.body, {
+      headers: {
+        'Content-Type': upstream.headers.get('content-type') || 'application/octet-stream',
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-cache',
+      },
+    });
+  } catch {
+    return new Response('Upstream fetch failed', { status: 502 });
   }
 }
