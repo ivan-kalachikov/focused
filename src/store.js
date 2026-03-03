@@ -11,7 +11,7 @@ import {
 
 const getAirportUrlByCode = (code) => {
   const { urlPostfix } = airports.find(({ codeIATA }) => codeIATA === code);
-  return new URL(urlPostfix, AIRPORT_URL_BASE).toString();
+  return `${AIRPORT_URL_BASE}/${urlPostfix}`;
 };
 
 const store = createStore({
