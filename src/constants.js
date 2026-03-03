@@ -1,4 +1,6 @@
-const AIRPORT_URL_BASE = 'https://s1-fmt2.liveatc.net';
+const AIRPORT_URL_BASE = import.meta.env.DEV
+  ? 'https://s1-fmt2.liveatc.net'
+  : '/api/radio';
 const DEFAULT_AIRPORT_CODE = 'OVB';
 const DEFAULT_MUSIC_ID = 0;
 const DEFAULT_MUSIC_VOLUME = 1;
