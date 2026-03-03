@@ -1,28 +1,30 @@
 import { createApp } from 'vue';
-import {
-  Select, Typography, Slider, Row, Col, Card, Layout, Popover,
-} from 'ant-design-vue';
 import AudioVisual from 'vue-audio-visual';
-import VueYandexMetrika from 'vue-yandex-metrika';
 import store from './store';
 import i18n from './locales/i18n';
-
 import App from './App.vue';
 
-const AppInstance = createApp(App);
-AppInstance.use(store)
+function initGA() {
+  const gaId = import.meta.env.VITE_GA_ID;
+  if (!gaId) return;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line no-inner-declarations
+  function gtag(...args) { window.dataLayer.push(args); }
+  gtag('js', new Date());
+  gtag('config', gaId);
+}
+
+const app = createApp(App);
+app.use(store)
   .use(i18n)
-  .use(Select)
-  .use(Typography)
-  .use(Slider)
-  .use(Row)
-  .use(Col)
-  .use(Card)
-  .use(Layout)
-  .use(Popover)
-  .use(AudioVisual)
-  .use(VueYandexMetrika, {
-    id: 82726366,
-    env: process.env.NODE_ENV,
-  })
-  .mount('#app');
+  .use(AudioVisual);
+
+initGA();
+
+app.mount('#app');

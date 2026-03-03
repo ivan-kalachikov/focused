@@ -18,6 +18,7 @@ const store = createStore({
   state() {
     return {
       appStatus: 'paused',
+      toast: null,
       music: {
         currentId: DEFAULT_MUSIC_ID,
         currentUrl: music[DEFAULT_MUSIC_ID].url,
@@ -39,6 +40,12 @@ const store = createStore({
   mutations: {
     setAppStatus(state, status) {
       state.appStatus = status;
+    },
+    showToast(state, payload) {
+      state.toast = payload;
+    },
+    clearToast(state) {
+      state.toast = null;
     },
     setCurrentAirportCode(state, code) {
       state.airports.currentCode = code;

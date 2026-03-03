@@ -31,47 +31,37 @@
     :canv-height="282"
     :fft-size="512"
   />
-  <a-layout-content class="content">
-    <a-row
-      align="middle"
-      justify="center"
-      class="container"
-    >
-      <a-col flex="100%">
-        <a-row justify="center">
-          <div v-if="isChristmasTime" class="christmas">
-            <img
-              src="../assets/christmas-hat.png"
-              :alt="t('ui.christmas')"
-              :title="t('ui.christmas')"
-              class="christmas-hat"
-            >
-          </div>
-          <Logo />
-        </a-row>
-        <a-row justify="center">
-          <div
-            :class="['playpause', appStatus === 'playing' ? 'playing' : '']"
-            @click="toggleAppStatus()"
-            :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
-          ></div>
-        </a-row>
-        <a-row
-          :gutter="[24, 12]"
-          justify="center"
-        >
-          <Music :audio="this.$refs.musicPlayer" />
-          <Airports :audio="this.$refs.airportPlayer" />
-        </a-row>
-      </a-col>
-    </a-row>
-  </a-layout-content>
+  <main class="content">
+    <div class="container">
+      <div class="row justify-center">
+        <div v-if="isChristmasTime" class="christmas">
+          <img
+            src="../assets/christmas-hat.png"
+            :alt="t('ui.christmas')"
+            :title="t('ui.christmas')"
+            class="christmas-hat"
+          >
+        </div>
+        <Logo />
+      </div>
+      <div class="row justify-center">
+        <div
+          :class="['playpause', appStatus === 'playing' ? 'playing' : '']"
+          @click="toggleAppStatus()"
+          :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
+        ></div>
+      </div>
+      <div class="row justify-center cards-row">
+        <Music :audio="this.$refs.musicPlayer" />
+        <Airports :audio="this.$refs.airportPlayer" />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
-import { message } from 'ant-design-vue';
 import { safePause, safePlay, safeLoad } from '../utilites';
 import Airports from './Airports.vue';
 import Music from './Music.vue';
@@ -125,16 +115,14 @@ export default {
     },
     MusicError(newVal) {
       if (newVal) {
-        message.error(newVal, () => {
-          this.setMusicError(null);
-        });
+        this.showToast({ message: newVal, type: 'error' });
+        this.setMusicError(null);
       }
     },
     AirportsError(newVal) {
       if (newVal) {
-        message.error(newVal, () => {
-          this.setAirportError(null);
-        });
+        this.showToast({ message: newVal, type: 'error' });
+        this.setAirportError(null);
       }
     },
   },
@@ -145,6 +133,7 @@ export default {
       'setAirportStatus',
       'setMusicError',
       'setMusicStatus',
+      'showToast',
     ]),
     toggleAppStatus() {
       const newStatus = this.appStatus === 'playing' ? 'paused' : 'playing';
@@ -200,12 +189,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 
 .container {
   width: 100%;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.cards-row {
+  gap: 12px;
 }
 
 .playpause {
@@ -336,6 +330,5 @@ export default {
   100% {
     transform: rotate(0deg)
   }
-
 }
 </style>
