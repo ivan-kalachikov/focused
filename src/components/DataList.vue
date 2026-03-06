@@ -97,7 +97,9 @@ export default {
 .data-list__header {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--grid-line);
-  margin-bottom: 4px;
+  margin: 0 calc(-1 * var(--cell-padding)) 4px;
+  padding-left: var(--cell-padding);
+  padding-right: var(--cell-padding);
 }
 
 .data-list__label {
@@ -112,7 +114,8 @@ export default {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 0;
+  padding: 4px var(--cell-padding);
+  margin: 0 calc(-1 * var(--cell-padding));
   border-bottom: 1px solid var(--grid-line);
 }
 
@@ -212,9 +215,9 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-top: 8px;
+  padding: 8px var(--cell-padding) 0;
+  margin: 8px calc(-1 * var(--cell-padding)) 0;
   border-top: 1px solid var(--grid-line);
-  margin-top: 8px;
 }
 
 .data-list__vol-label {
