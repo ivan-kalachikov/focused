@@ -6,13 +6,13 @@
 export default {
   name: 'ParticleCanvas',
   props: {
-    musicAnalyser: {
-      type: Object,
-      default: null,
+    musicAmplitude: {
+      type: Number,
+      default: 0,
     },
-    airportAnalyser: {
-      type: Object,
-      default: null,
+    airportAmplitude: {
+      type: Number,
+      default: 0,
     },
     sphereRect: {
       type: Object,
@@ -127,9 +127,9 @@ export default {
     },
 
     createParticlePool() {
-      // Pre-create maximum possible particles for object pooling
-      const maxMusic = this.isMobile ? 30 : 60;
-      const maxAirport = this.isMobile ? 25 : 50;
+      // Always allocate desktop max so viewport changes don't overflow the pool
+      const maxMusic = 60;
+      const maxAirport = 50;
 
       this.musicParticles = [];
       for (let i = 0; i < maxMusic; i++) {
@@ -275,13 +275,9 @@ export default {
       const cx = this.orbitCenterX;
       const cy = this.orbitCenterY;
 
-      // Read audio amplitudes
-      const musicAmp = this.isPlaying && this.musicAnalyser
-        ? this.musicAnalyser.getAmplitude()
-        : 0;
-      const airportAmp = this.isPlaying && this.airportAnalyser
-        ? this.airportAnalyser.getAmplitude()
-        : 0;
+      // Read audio amplitudes from props (Main.vue samples once per frame)
+      const musicAmp = this.isPlaying ? this.musicAmplitude : 0;
+      const airportAmp = this.isPlaying ? this.airportAmplitude : 0;
 
       const speedMultiplier = this.isPlaying ? 1 : 0.1;
 

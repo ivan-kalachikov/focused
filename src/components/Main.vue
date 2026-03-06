@@ -5,8 +5,8 @@
   <main class="main-area">
     <Starfield :musicAmplitude="musicAmplitude" :airportAmplitude="airportAmplitude" />
     <ParticleCanvas
-      :musicAnalyser="musicAudio"
-      :airportAnalyser="airportAudio"
+      :musicAmplitude="musicAmplitude"
+      :airportAmplitude="airportAmplitude"
       :sphereRect="sphereRect"
       :isPlaying="appStatus === 'playing'"
     />
@@ -67,7 +67,7 @@ export default {
   setup() {
     const { t } = useI18n();
     return {
-      t, safePause, safePlay, safeLoad, useAudioAnalyser,
+      t, safePause, safePlay, safeLoad,
     };
   },
   data() {
@@ -147,8 +147,12 @@ export default {
     },
   },
   mounted() {
-    this.musicAudio = this.useAudioAnalyser();
-    this.airportAudio = this.useAudioAnalyser();
+    this.musicAudio = useAudioAnalyser();
+    this.airportAudio = useAudioAnalyser();
+
+    if (this.appStatus === 'playing') {
+      this.connectAnalysers();
+    }
 
     this.updateSphereRect();
     this._resizeHandler = () => this.updateSphereRect();
