@@ -88,6 +88,7 @@ a:hover, a:active {
     "airports  music"
     "statusbar statusbar";
   gap: 0;
+  animation: crt-flicker 3s ease-in-out infinite;
 }
 
 .layout > * {
@@ -107,17 +108,18 @@ a:hover, a:active {
     rgba(0, 0, 0, 0.22) 2px,
     rgba(0, 0, 0, 0.22) 4px
   );
-  animation: crt-flicker 3s ease-in-out infinite;
 }
 
 @keyframes crt-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.95; }
-  85% { opacity: 1; }
-  86% { opacity: 0.5; }
-  87% { opacity: 0.9; }
-  88% { opacity: 0.55; }
-  89% { opacity: 1; }
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(0.95); }
+  82% { filter: brightness(1); }
+  83% { filter: brightness(0); }
+  84% { filter: brightness(1); }
+  85% { filter: brightness(0); }
+  86% { filter: brightness(0.5); }
+  87% { filter: brightness(0); }
+  88% { filter: brightness(1); }
 }
 
 *:focus-visible {
