@@ -13,7 +13,7 @@
 
     <!-- Desktop: panels + sphere -->
     <template v-if="!isMobile">
-      <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
+      <GlassPanel tilt="left" accent-color="--accent-cool">
         <DataList
           :items="airports"
           value-key="codeIATA"
@@ -24,21 +24,25 @@
           @update:model-value="setCurrentAirportCode"
           :volume="airportVolume"
           @update:volume="setAirportVolume"
-          label="ATC FEED"
+          :label="t('ui.atcFeed')"
           accent-color="--accent-cool"
         />
       </GlassPanel>
     </template>
 
-    <Sphere
-      :app-status="appStatus"
-      :is-buffering="isBuffering"
-      :has-error="hasError"
-      @toggle="toggleAppStatus"
-    />
+    <div class="sphere-zone">
+      <span v-if="!isMobile" class="sphere-zone__ghost sphere-zone__ghost--left" aria-hidden="true">{{ currentAirportCode }}</span>
+      <Sphere
+        :app-status="appStatus"
+        :is-buffering="isBuffering"
+        :has-error="hasError"
+        @toggle="toggleAppStatus"
+      />
+      <span v-if="!isMobile" class="sphere-zone__ghost sphere-zone__ghost--right" aria-hidden="true">{{ currentMusicName }}</span>
+    </div>
 
     <template v-if="!isMobile">
-      <GlassPanel tilt="right" :ghostText="currentMusicName" accent-color="--accent-warm">
+      <GlassPanel tilt="right" accent-color="--accent-warm">
         <DataList
           :items="musicList"
           value-key="id"
@@ -48,7 +52,7 @@
           @update:model-value="setCurrentMusicId"
           :volume="musicVolume"
           @update:volume="setMusicVolume"
-          label="MUSIC FEED"
+          :label="t('ui.musicFeed')"
           accent-color="--accent-warm"
         />
       </GlassPanel>
@@ -320,5 +324,47 @@ export default {
     flex-direction: column;
     padding-bottom: 60px; /* space for collapsed drawer */
   }
+}
+
+.sphere-zone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sphere-zone__ghost {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(232, 232, 236, 0.07);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+  z-index: 1;
+  overflow: hidden;
+  max-width: 240px;
+}
+
+.sphere-zone__ghost--left {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.sphere-zone__ghost--right {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+@media (max-width: 1023px) {
+  .sphere-zone__ghost { font-size: 48px; }
 }
 </style>

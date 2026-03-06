@@ -20,7 +20,7 @@
         aria-controls="drawer-panel"
         @click="activeTab = 'atc'"
       >
-        ATC
+        {{ t('ui.atc') }}
       </button>
       <button
         id="tab-music"
@@ -31,7 +31,7 @@
         aria-controls="drawer-panel"
         @click="activeTab = 'music'"
       >
-        MUSIC
+        {{ t('ui.music') }}
       </button>
     </div>
 
@@ -47,7 +47,7 @@
         @update:model-value="$emit('update:airportCode', $event)"
         :volume="airportVolume"
         @update:volume="$emit('update:airportVolume', $event)"
-        label="ATC FEED"
+        :label="t('ui.atcFeed')"
         accent-color="--accent-cool"
       />
       <DataList
@@ -60,7 +60,7 @@
         @update:model-value="$emit('update:musicId', $event)"
         :volume="musicVolume"
         @update:volume="$emit('update:musicVolume', $event)"
-        label="MUSIC FEED"
+        :label="t('ui.musicFeed')"
         accent-color="--accent-warm"
       />
     </div>
@@ -68,11 +68,16 @@
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n';
 import DataList from './DataList.vue';
 
 export default {
   name: 'MobileDrawer',
   components: { DataList },
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     airportItems: {
       type: Array,

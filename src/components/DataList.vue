@@ -5,7 +5,7 @@
       <input
         class="data-list__search"
         type="text"
-        :placeholder="'Search...'"
+        :placeholder="t('ui.search')"
         v-model="query"
         :aria-label="'Search ' + label"
       />
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="data-list__volume">
-      <span class="data-list__vol-label">VOL</span>
+      <span class="data-list__vol-label">{{ t('ui.volume') }}</span>
       <input
         type="range"
         class="data-list__slider"
@@ -44,8 +44,14 @@
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n';
+
 export default {
   name: 'DataList',
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     items: { type: Array, required: true },
     valueKey: { type: String, required: true },
@@ -80,13 +86,24 @@ export default {
       this.$el.style.setProperty('--accent', 'var(' + this.accentColor + ')');
       this.$el.style.setProperty('--accent-glow', 'var(' + glowVar + ')');
     },
+    scrollToActive() {
+      const container = this.$el?.querySelector('.data-list__items');
+      if (!container) return;
+      const activeRow = container.querySelector('.data-list__row--active');
+      if (!activeRow) return;
+      activeRow.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    },
   },
   mounted() {
     this.applyAccentColor();
+    this.$nextTick(() => this.scrollToActive());
   },
   watch: {
     accentColor() {
       this.applyAccentColor();
+    },
+    modelValue() {
+      this.$nextTick(() => this.scrollToActive());
     },
   },
 };

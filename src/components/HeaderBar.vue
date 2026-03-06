@@ -11,10 +11,15 @@
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n';
 import { mapState } from 'vuex';
 
 export default {
   name: 'HeaderBar',
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   computed: {
     ...mapState(['appStatus']),
     ...mapState({
@@ -27,7 +32,7 @@ export default {
     },
     statusText() {
       if (this.appStatus === 'playing') {
-        return `NOW PLAYING: ${this.currentCode} / ${this.currentStationName}`;
+        return `${this.t('ui.nowPlaying')}: ${this.currentCode} / ${this.currentStationName}`;
       }
       return '';
     },

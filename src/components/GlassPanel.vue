@@ -4,9 +4,7 @@
     :class="[tiltClass]"
     @mousemove="onMouseMove"
     @mouseleave="onMouseLeave"
-    :style="panelStyle"
   >
-    <span v-if="ghostText" class="panel__ghost" aria-hidden="true">{{ displayGhost }}</span>
     <slot></slot>
   </div>
 </template>
@@ -19,25 +17,9 @@ export default {
       type: String,
       default: 'none',
     },
-    ghostText: {
-      type: String,
-      default: '',
-    },
     accentColor: {
       type: String,
       default: '--accent-neutral',
-    },
-  },
-  data() {
-    return {
-      displayGhost: this.ghostText,
-    };
-  },
-  watch: {
-    ghostText(newVal) {
-      setTimeout(() => {
-        this.displayGhost = newVal;
-      }, 200);
     },
   },
   computed: {
@@ -45,9 +27,6 @@ export default {
       if (this.tilt === 'left') return 'panel--left';
       if (this.tilt === 'right') return 'panel--right';
       return '';
-    },
-    panelStyle() {
-      return {};
     },
   },
   methods: {
@@ -107,23 +86,6 @@ export default {
   transform: perspective(800px) rotateY(-2deg);
 }
 
-.panel__ghost {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-display);
-  font-size: 120px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  transition: opacity 0.4s ease;
-  text-transform: uppercase;
-}
-
 @media (max-width: 1023px) {
   .panel { max-width: 280px; }
   .panel--left { transform: perspective(800px) rotateY(1deg); }
@@ -138,6 +100,5 @@ export default {
     border-radius: 0;
     padding: 16px;
   }
-  .panel__ghost { display: none; }
 }
 </style>
