@@ -1,7 +1,7 @@
 <template>
   <header class="header-bar">
     <div class="header-bar__left">
-      <span class="header-bar__logo-placeholder" :class="{ 'header-bar__logo-placeholder--blink': appStatus === 'playing' }">█</span>
+      <SignalLogo class="header-bar__logo" :class="{ 'header-bar__logo--playing': appStatus === 'playing' }" />
       <span class="header-bar__title">FOCUSED</span>
     </div>
     <div class="header-bar__right">
@@ -12,9 +12,11 @@
 
 <script>
 import { mapState } from 'vuex';
+import SignalLogo from '../assets/signal-logo.svg';
 
 export default {
   name: 'HeaderBar',
+  components: { SignalLogo },
   data() {
     return { clock: '' };
   },
@@ -51,9 +53,10 @@ export default {
   gap: 8px;
 }
 
-.header-bar__logo-placeholder {
+.header-bar__logo {
+  width: 24px;
+  height: 24px;
   color: var(--accent);
-  font-size: 16px;
 }
 
 .header-bar__title {
@@ -76,12 +79,12 @@ export default {
   letter-spacing: 0.08em;
 }
 
-.header-bar__logo-placeholder--blink {
-  animation: blink 1s step-end infinite;
+.header-bar__logo--playing circle {
+  animation: radar-pulse 2s ease-in-out infinite;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@keyframes radar-pulse {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 0 transparent); }
+  50% { opacity: 0.6; filter: drop-shadow(0 0 4px var(--accent)); }
 }
 </style>
