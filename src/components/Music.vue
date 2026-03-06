@@ -89,11 +89,11 @@ export default {
 }
 
 .music-list__name {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .music-list__desc {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-muted);
   font-weight: 300;
 }

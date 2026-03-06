@@ -76,7 +76,7 @@ export default {
 }
 
 .airports-list__iata {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -84,12 +84,12 @@ export default {
 }
 
 .airports-list__city {
-  font-size: 14px;
+  font-size: 16px;
   flex: 1;
 }
 
 .airports-list__country {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-dim);
   letter-spacing: 0.1em;
   padding-right: 8px;

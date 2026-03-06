@@ -105,7 +105,7 @@ export default {
 }
 
 .data-list__label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -122,7 +122,7 @@ export default {
 }
 
 .data-list__prompt {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--accent);
   flex-shrink: 0;
 }
@@ -134,7 +134,7 @@ export default {
   outline: none;
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.02em;
   padding: 2px 0;
 }
@@ -182,8 +182,8 @@ export default {
 
 .data-list__indicator {
   flex-shrink: 0;
-  width: 12px;
-  font-size: 14px;
+  width: 14px;
+  font-size: 16px;
   color: var(--accent);
   opacity: 0;
   transition: opacity 0.1s;
@@ -197,7 +197,7 @@ export default {
   padding: 12px 0;
   text-align: center;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* Scrollbar */
@@ -223,7 +223,7 @@ export default {
 }
 
 .data-list__vol-label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -273,7 +273,7 @@ export default {
 }
 
 .data-list__vol-pct {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-dim);
   min-width: 36px;
   text-align: right;

@@ -62,7 +62,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.02em;
   height: 100%;
 }
