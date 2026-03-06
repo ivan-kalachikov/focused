@@ -88,13 +88,13 @@ a:hover, a:active {
     "airports  music"
     "statusbar statusbar";
   gap: 0;
-  animation: crt-flicker 3s ease-in-out infinite;
 }
 
 .layout > * {
   outline: 1px dotted var(--grid-line);
 }
 
+/* CRT scan-line overlay */
 .layout::after {
   content: '';
   position: fixed;
@@ -110,14 +110,47 @@ a:hover, a:active {
   );
 }
 
-@keyframes crt-flicker {
+/* CRT screen depth — vignette on each panel */
+.status-word,
+.oscilloscope,
+.airports-list,
+.music-list {
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Independent CRT flicker per panel — prime-ish durations so they never sync */
+.status-word    { animation: crt-flicker-a 7s  ease-in-out infinite; }
+.oscilloscope   { animation: crt-flicker-b 5s  ease-in-out infinite; }
+.airports-list  { animation: crt-flicker-c 11s ease-in-out infinite; }
+.music-list     { animation: crt-flicker-d 8s  ease-in-out infinite; }
+
+@keyframes crt-flicker-a {
   0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(0.98); }
-  85% { filter: brightness(1); }
-  86% { filter: brightness(0.8); }
+  86% { filter: brightness(0.82); }
   87% { filter: brightness(0.95); }
-  88% { filter: brightness(0.82); }
+  88% { filter: brightness(0.84); }
   89% { filter: brightness(1); }
+}
+@keyframes crt-flicker-b {
+  0%, 100% { filter: brightness(1); }
+  72% { filter: brightness(0.8); }
+  73% { filter: brightness(0.92); }
+  74% { filter: brightness(0.85); }
+  75% { filter: brightness(1); }
+}
+@keyframes crt-flicker-c {
+  0%, 100% { filter: brightness(1); }
+  91% { filter: brightness(0.84); }
+  92% { filter: brightness(0.96); }
+  93% { filter: brightness(0.8); }
+  94% { filter: brightness(1); }
+}
+@keyframes crt-flicker-d {
+  0%, 100% { filter: brightness(1); }
+  62% { filter: brightness(0.82); }
+  63% { filter: brightness(0.94); }
+  64% { filter: brightness(0.86); }
+  65% { filter: brightness(1); }
 }
 
 *:focus-visible {
