@@ -35,6 +35,7 @@ const messages = {
       statusTransmitting: 'TRANSMITTING',
       statusUptime: 'UPTIME',
       thanksTo: 'Thanks: ',
+      waveformLabel: 'Audio waveform visualization',
     },
   },
   ru: {
@@ -73,6 +74,7 @@ const messages = {
       statusTransmitting: 'ПЕРЕДАЧА',
       statusUptime: 'ВРЕМЯ РАБОТЫ',
       thanksTo: 'Спасибо: ',
+      waveformLabel: 'Визуализация аудиосигнала',
     },
   },
   es: {
@@ -111,6 +113,7 @@ const messages = {
       statusTransmitting: 'TRANSMITIENDO',
       statusUptime: 'ACTIVO',
       thanksTo: 'Gracias: ',
+      waveformLabel: 'Visualización de forma de onda',
     },
   },
   fr: {
@@ -149,6 +152,7 @@ const messages = {
       statusTransmitting: 'TRANSMISSION',
       statusUptime: 'DURÉE',
       thanksTo: 'Remerciements : ',
+      waveformLabel: 'Visualisation de la forme d\'onde',
     },
   },
   de: {
@@ -187,6 +191,7 @@ const messages = {
       statusTransmitting: 'ÜBERTRAGUNG',
       statusUptime: 'LAUFZEIT',
       thanksTo: 'Danke: ',
+      waveformLabel: 'Audio-Wellenform-Visualisierung',
     },
   },
   pt: {
@@ -225,6 +230,7 @@ const messages = {
       statusTransmitting: 'TRANSMITINDO',
       statusUptime: 'ATIVO',
       thanksTo: 'Agradecimentos: ',
+      waveformLabel: 'Visualização de forma de onda',
     },
   },
   zh: {
@@ -263,6 +269,7 @@ const messages = {
       statusTransmitting: '传输中',
       statusUptime: '运行时间',
       thanksTo: '致谢：',
+      waveformLabel: '音频波形可视化',
     },
   },
   ja: {
@@ -301,6 +308,7 @@ const messages = {
       statusTransmitting: '送信中',
       statusUptime: '稼働時間',
       thanksTo: '感謝：',
+      waveformLabel: 'オーディオ波形表示',
     },
   },
   ko: {
@@ -339,6 +347,7 @@ const messages = {
       statusTransmitting: '송신 중',
       statusUptime: '가동 시간',
       thanksTo: '감사: ',
+      waveformLabel: '오디오 파형 시각화',
     },
   },
 };
