@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <div style="grid-area: header; padding: var(--cell-padding);">HEADER</div>
+    <HeaderBar />
     <div style="grid-area: status; padding: var(--cell-padding);">STATUS</div>
     <div style="grid-area: visualizer; padding: var(--cell-padding);">VISUALIZER</div>
     <div style="grid-area: airports; padding: var(--cell-padding);">AIRPORTS</div>
@@ -16,9 +16,11 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import HeaderBar from './components/HeaderBar.vue';
 
 export default {
   name: 'App',
+  components: { HeaderBar },
   computed: mapState(['toast']),
   watch: {
     toast(val) {
