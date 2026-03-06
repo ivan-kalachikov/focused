@@ -42,6 +42,7 @@
         min="0"
         max="100"
         :value="Math.round(volume * 100)"
+        :style="{ '--vol-pct': Math.round(volume * 100) + '%' }"
         :aria-label="volumeAriaLabel"
         @input="$emit('update:volume', Number($event.target.value) / 100)"
       />
