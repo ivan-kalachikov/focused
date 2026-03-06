@@ -115,7 +115,7 @@ a:hover, a:active {
 .oscilloscope,
 .airports-list,
 .music-list {
-  box-shadow: inset 0 0 60px rgba(0, 255, 65, 0.03);
+  box-shadow: inset 0 0 80px 20px rgba(0, 255, 65, 0.25);
 }
 
 /* Independent CRT flicker per panel — prime-ish durations so they never sync */
