@@ -104,9 +104,18 @@ a:hover, a:active {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.08) 2px,
-    rgba(0, 0, 0, 0.08) 4px
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
   );
+  animation: crt-flicker 4s ease-in-out infinite;
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+  92% { opacity: 0.9; }
+  93% { opacity: 0.7; }
+  94% { opacity: 0.9; }
 }
 
 *:focus-visible {
