@@ -3,6 +3,8 @@
   <audio ref="airportPlayer" @error="airportErrorHandler" @play="airportPlayHandler" :src="currentAirportUrl" crossorigin="anonymous" />
 
   <main class="main-area">
+    <Starfield />
+
     <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
       <DataList
         :items="airports"
@@ -50,6 +52,7 @@ import { safePause, safePlay, safeLoad } from '../utilites';
 import Sphere from './Sphere.vue';
 import GlassPanel from './GlassPanel.vue';
 import DataList from './DataList.vue';
+import Starfield from './Starfield.vue';
 
 export default {
   name: 'Main',
@@ -178,7 +181,7 @@ export default {
       }
     },
   },
-  components: { Sphere, GlassPanel, DataList },
+  components: { Sphere, GlassPanel, DataList, Starfield },
 };
 </script>
 
