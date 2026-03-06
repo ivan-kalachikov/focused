@@ -74,7 +74,7 @@ export default {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  animation: typewriter 0.4s steps(12) forwards;
+  animation: typewriter 0.4s steps(12) forwards, subtle-glitch 8s ease-in-out 1s infinite;
 }
 
 .status-word__cursor {
@@ -128,6 +128,15 @@ export default {
 
 .status-word--error .status-word__text {
   animation: typewriter 0.4s steps(12) forwards, glitch 0.3s ease-in-out 0.4s infinite;
+}
+
+@keyframes subtle-glitch {
+  0%, 100% { transform: translate(0); opacity: 1; }
+  92% { transform: translate(0); opacity: 1; }
+  93% { transform: translate(-2px, 1px); opacity: 0.8; }
+  94% { transform: translate(1px, -1px); opacity: 0.85; }
+  95% { transform: translate(-1px, 0); opacity: 0.75; }
+  96% { transform: translate(0); opacity: 1; }
 }
 
 @keyframes glitch {
