@@ -76,7 +76,8 @@ a:hover, a:active {
 }
 
 .layout {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -126,6 +127,9 @@ a:hover, a:active {
 
 @media (max-width: 767px) {
   .layout {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
