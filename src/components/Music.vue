@@ -48,6 +48,9 @@ export default {
     },
   },
   watch: {
+    audio(el) {
+      if (el) el.volume = this.musicVolume;
+    },
     musicVolume(newVal) {
       if (this.audio) this.audio.volume = newVal;
     },

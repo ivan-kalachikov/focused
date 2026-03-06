@@ -41,6 +41,9 @@ export default {
     appStatus: (state) => state.appStatus,
   }),
   watch: {
+    audio(el) {
+      if (el) el.volume = this.airportVolume;
+    },
     airportVolume(newVal) {
       if (this.audio) this.audio.volume = newVal;
     },

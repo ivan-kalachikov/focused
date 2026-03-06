@@ -72,9 +72,16 @@ export function useAudioAnalyser(options = {}) {
     return frequency;
   }
 
+  function resume() {
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
   return {
     connect,
     disconnect,
+    resume,
     getWaveform,
     getFrequency,
   };

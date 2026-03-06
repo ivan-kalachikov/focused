@@ -135,6 +135,7 @@ export default {
       this.setAppStatus(this.appStatus === 'playing' ? 'paused' : 'playing');
     },
     play() {
+      this.atcAnalyser.resume();
       this.safePlay(this.$refs.musicPlayer);
       this.safePlay(this.$refs.airportPlayer);
     },
