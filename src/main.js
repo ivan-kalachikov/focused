@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-import AudioVisual from 'vue-audio-visual';
 import store from './store';
 import i18n from './locales/i18n';
 import App from './App.vue';
@@ -22,8 +21,7 @@ function initGA() {
 
 const app = createApp(App);
 app.use(store)
-  .use(i18n)
-  .use(AudioVisual);
+  .use(i18n);
 
 initGA();
 
