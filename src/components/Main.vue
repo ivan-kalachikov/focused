@@ -1,61 +1,45 @@
 <template>
-  <audio
-    ref="musicPlayer"
-    @error="musicErrorHandler"
-    @play="musicPlayHandler"
-    :src="currentMusicUrl"
-    crossorigin="anonymous"
-  />
-  <audio
-    ref="airportPlayer"
-    @error="airportErrorHandler"
-    @play="airportPlayHandler"
-    :src="currentAirportUrl"
-    crossorigin="anonymous"
-  />
-  <av-line
-    class="audio-visual-music"
-    :line-width="2"
-    line-color="#21212a"
-    ref-link="musicPlayer"
-    :canv-width="1400"
-    :canv-height="210"
-    :fft-size="512"
-  />
-  <av-line
-    class="audio-visual-airport"
-    :line-width="2"
-    line-color="#252535"
-    ref-link="airportPlayer"
-    :canv-width="1000"
-    :canv-height="282"
-    :fft-size="512"
-  />
-  <main class="content">
-    <div class="container">
-      <div class="row justify-center">
-        <div v-if="isChristmasTime" class="christmas">
-          <img
-            src="../assets/christmas-hat.png"
-            :alt="t('ui.christmas')"
-            :title="t('ui.christmas')"
-            class="christmas-hat"
-          >
-        </div>
-        <Logo />
-      </div>
-      <div class="row justify-center">
-        <div
-          :class="['playpause', appStatus === 'playing' ? 'playing' : '']"
-          @click="toggleAppStatus()"
-          :title="appStatus === 'playing' ? t('ui.pause') : t('ui.play')"
-        ></div>
-      </div>
-      <div class="row justify-center cards-row">
-        <Music :audio="this.$refs.musicPlayer" />
-        <Airports :audio="this.$refs.airportPlayer" />
-      </div>
-    </div>
+  <audio ref="musicPlayer" @error="musicErrorHandler" @play="musicPlayHandler" :src="currentMusicUrl" crossorigin="anonymous" />
+  <audio ref="airportPlayer" @error="airportErrorHandler" @play="airportPlayHandler" :src="currentAirportUrl" crossorigin="anonymous" />
+
+  <main class="main-area">
+    <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
+      <DataList
+        :items="airports"
+        value-key="codeIATA"
+        label-key="city"
+        :secondary-keys="[{ key: 'codeIATA' }, { key: 'countryCode' }]"
+        :filter-keys="['city', 'codeIATA', 'codeICAO', 'country']"
+        :model-value="currentAirportCode"
+        @update:model-value="setCurrentAirportCode"
+        :volume="airportVolume"
+        @update:volume="setAirportVolume"
+        label="ATC FEED"
+        accent-color="--accent-cool"
+      />
+    </GlassPanel>
+
+    <Sphere
+      :app-status="appStatus"
+      :is-buffering="isBuffering"
+      :has-error="hasError"
+      @toggle="toggleAppStatus"
+    />
+
+    <GlassPanel tilt="right" :ghostText="currentMusicName" accent-color="--accent-warm">
+      <DataList
+        :items="musicList"
+        value-key="id"
+        label-key="name"
+        :filter-keys="['name', 'description']"
+        :model-value="currentMusicId"
+        @update:model-value="setCurrentMusicId"
+        :volume="musicVolume"
+        @update:volume="setMusicVolume"
+        label="MUSIC FEED"
+        accent-color="--accent-warm"
+      />
+    </GlassPanel>
   </main>
 </template>
 
@@ -63,9 +47,9 @@
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
 import { safePause, safePlay, safeLoad } from '../utilites';
-import Airports from './Airports.vue';
-import Music from './Music.vue';
-import Logo from '../assets/logo.svg';
+import Sphere from './Sphere.vue';
+import GlassPanel from './GlassPanel.vue';
+import DataList from './DataList.vue';
 
 export default {
   name: 'Main',
@@ -82,14 +66,22 @@ export default {
       currentAirportUrl: (state) => state.airports.currentUrl,
       currentMusicUrl: (state) => state.music.currentUrl,
       MusicError: (state) => state.music.error,
+      airports: (state) => state.airports.list,
+      currentAirportCode: (state) => state.airports.currentCode,
+      airportVolume: (state) => state.airports.volume,
+      musicList: (state) => state.music.list,
+      currentMusicId: (state) => state.music.currentId,
+      musicVolume: (state) => state.music.volume,
     }),
-    isChristmasTime() {
-      const currentDate = Date.now();
-      const currentYear = new Date().getFullYear();
-      const currentMonth = new Date().getMonth();
-      const christmasStart = new Date(`${currentMonth === 11 ? currentYear : currentYear + 1}-12-20`).getTime();
-      const christmasEnd = Date(christmasStart + 60 * 60 * 24 * 20 * 1000);
-      return (currentDate > christmasStart) && (currentDate < christmasEnd);
+    currentMusicName() {
+      const station = this.musicList[this.currentMusicId];
+      return station ? station.name : '';
+    },
+    isBuffering() {
+      return this.$store.state.airports.status === 'pending' || this.$store.state.music.status === 'pending';
+    },
+    hasError() {
+      return this.$store.state.airports.status === 'failed' || this.$store.state.music.status === 'failed';
     },
   },
   watch: {
@@ -125,6 +117,12 @@ export default {
         this.setAirportError(null);
       }
     },
+    airportVolume(newVal) {
+      if (this.$refs.airportPlayer) this.$refs.airportPlayer.volume = newVal;
+    },
+    musicVolume(newVal) {
+      if (this.$refs.musicPlayer) this.$refs.musicPlayer.volume = newVal;
+    },
   },
   methods: {
     ...mapMutations([
@@ -134,6 +132,10 @@ export default {
       'setMusicError',
       'setMusicStatus',
       'showToast',
+      'setCurrentAirportCode',
+      'setAirportVolume',
+      'setCurrentMusicId',
+      'setMusicVolume',
     ]),
     toggleAppStatus() {
       const newStatus = this.appStatus === 'playing' ? 'paused' : 'playing';
@@ -176,159 +178,25 @@ export default {
       }
     },
   },
-  components: {
-    Music,
-    Airports,
-    Logo,
-  },
+  components: { Sphere, GlassPanel, DataList },
 };
 </script>
 
 <style>
-.content {
+.main-area {
+  grid-area: main;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
-}
-
-.container {
-  width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.cards-row {
-  gap: 12px;
-}
-
-.playpause {
+  gap: 32px;
+  padding: 24px;
   position: relative;
-  background: #191921;
-  border: 6px #a3a4a7;
-  outline: none;
-  height: 140px;
-  width: 140px;
-  cursor: pointer;
-  border-radius: 50%;
-  animation: pulse 2s ease-in infinite alternate;
-  animation-play-state: paused;
-  margin-top: 75px;
-  margin-bottom: 60px;
 }
 
-.playpause.playing,
-.playpause:hover {
-  animation-play-state: running;
-}
-
-.playpause:focus {
-  outline: none;
-}
-
-.playpause:before {
-  content: "";
-  position: absolute;
-  top: 50px;
-  left: 56px;
-  height: 0;
-  border-style: solid;
-  border-width: 20px 0 20px 40px;
-  border-color: transparent transparent transparent #eeeeee;
-  transition: 0.2s ease;
-}
-
-.playpause.playing:before {
-  left: 54px;
-  height: 40px;
-  border-width: 0 0 0 35px;
-}
-
-.playpause.playing:after {
-  width: 11px;
-}
-
-.playpause:after {
-  content: "";
-  position: absolute;
-  background: inherit;
-  width: 0;
-  height: 60px;
-  top: 30px;
-  left: 66px;
-  transition: 0.15s ease-in-out;
-}
-
-.christmas {
-  position: absolute;
-  transform: translate(100px, -50%);
-}
-
-.christmas-hat {
-   width: 91px;
-  animation: christmas 2s ease-in infinite alternate;
-}
-
-@media screen and (min-width: 768px) {
-  .audio-visual-music canvas,
-  .audio-visual-airport canvas {
-    position: absolute;
-    left: 50%;
-    top: calc(50% - 92px);
-    transform: translate(-50%, -50%);
-  }
-
-  .audio-visual-music canvas {
-    width: 1400px;
-    height: 210px;
-  }
-
-  .audio-visual-airport canvas {
-    width: 1000px;
-    height: 282px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .audio-visual-airport canvas,
-  .audio-visual-music canvas {
-    display: none;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 45px 15px rgba(85, 98, 212, 0.302);
-  }
-
-  50% {
-    transform: scale(1);
-    box-shadow: 0 0 30px 15px rgba(85, 98, 212, 0.5);
-  }
-
-  100% {
-    box-shadow: 0 0 35px 12px rgba(85, 98, 212, 0.4);
-  }
-}
-
-@keyframes christmas {
-  0% {
-    transform: rotate(0deg)
-  }
-  20% {
-    transform: rotate(5deg)
-  }
-  40% {
-    transform: rotate(-5deg)
-  }
-  60% {
-    transform: rotate(10deg)
-  }
-  80% {
-    transform: rotate(-10deg)
-  }
-  100% {
-    transform: rotate(0deg)
+@media (max-width: 1023px) {
+  .main-area {
+    gap: 24px;
+    padding: 16px;
   }
 }
 </style>
