@@ -11,21 +11,24 @@
       :isPlaying="appStatus === 'playing'"
     />
 
-    <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
-      <DataList
-        :items="airports"
-        value-key="codeIATA"
-        label-key="city"
-        :secondary-keys="[{ key: 'codeIATA' }, { key: 'countryCode' }]"
-        :filter-keys="['city', 'codeIATA', 'codeICAO', 'country']"
-        :model-value="currentAirportCode"
-        @update:model-value="setCurrentAirportCode"
-        :volume="airportVolume"
-        @update:volume="setAirportVolume"
-        label="ATC FEED"
-        accent-color="--accent-cool"
-      />
-    </GlassPanel>
+    <!-- Desktop: panels + sphere -->
+    <template v-if="!isMobile">
+      <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
+        <DataList
+          :items="airports"
+          value-key="codeIATA"
+          label-key="city"
+          :secondary-keys="[{ key: 'codeIATA' }, { key: 'countryCode' }]"
+          :filter-keys="['city', 'codeIATA', 'codeICAO', 'country']"
+          :model-value="currentAirportCode"
+          @update:model-value="setCurrentAirportCode"
+          :volume="airportVolume"
+          @update:volume="setAirportVolume"
+          label="ATC FEED"
+          accent-color="--accent-cool"
+        />
+      </GlassPanel>
+    </template>
 
     <Sphere
       :app-status="appStatus"
@@ -34,20 +37,37 @@
       @toggle="toggleAppStatus"
     />
 
-    <GlassPanel tilt="right" :ghostText="currentMusicName" accent-color="--accent-warm">
-      <DataList
-        :items="musicList"
-        value-key="id"
-        label-key="name"
-        :filter-keys="['name', 'description']"
-        :model-value="currentMusicId"
-        @update:model-value="setCurrentMusicId"
-        :volume="musicVolume"
-        @update:volume="setMusicVolume"
-        label="MUSIC FEED"
-        accent-color="--accent-warm"
-      />
-    </GlassPanel>
+    <template v-if="!isMobile">
+      <GlassPanel tilt="right" :ghostText="currentMusicName" accent-color="--accent-warm">
+        <DataList
+          :items="musicList"
+          value-key="id"
+          label-key="name"
+          :filter-keys="['name', 'description']"
+          :model-value="currentMusicId"
+          @update:model-value="setCurrentMusicId"
+          :volume="musicVolume"
+          @update:volume="setMusicVolume"
+          label="MUSIC FEED"
+          accent-color="--accent-warm"
+        />
+      </GlassPanel>
+    </template>
+
+    <!-- Mobile: drawer -->
+    <MobileDrawer
+      v-if="isMobile"
+      :airportItems="airports"
+      :musicItems="musicList"
+      :currentAirportCode="currentAirportCode"
+      :currentMusicId="currentMusicId"
+      :airportVolume="airportVolume"
+      :musicVolume="musicVolume"
+      @update:airportCode="setCurrentAirportCode"
+      @update:musicId="setCurrentMusicId"
+      @update:airportVolume="setAirportVolume"
+      @update:musicVolume="setMusicVolume"
+    />
   </main>
 </template>
 
@@ -61,6 +81,7 @@ import GlassPanel from './GlassPanel.vue';
 import DataList from './DataList.vue';
 import Starfield from './Starfield.vue';
 import ParticleCanvas from './ParticleCanvas.vue';
+import MobileDrawer from './MobileDrawer.vue';
 
 export default {
   name: 'Main',
@@ -72,6 +93,7 @@ export default {
   },
   data() {
     return {
+      isMobile: false,
       musicAudio: null,
       airportAudio: null,
       sphereRect: null,
@@ -158,6 +180,11 @@ export default {
     this._resizeHandler = () => this.updateSphereRect();
     window.addEventListener('resize', this._resizeHandler);
 
+    this._mobileQuery = window.matchMedia('(max-width: 767px)');
+    this.isMobile = this._mobileQuery.matches;
+    this._mobileHandler = (e) => { this.isMobile = e.matches; };
+    this._mobileQuery.addEventListener('change', this._mobileHandler);
+
     this.startAmplitudeLoop();
   },
   beforeUnmount() {
@@ -166,6 +193,10 @@ export default {
 
     if (this._resizeHandler) {
       window.removeEventListener('resize', this._resizeHandler);
+    }
+
+    if (this._mobileQuery && this._mobileHandler) {
+      this._mobileQuery.removeEventListener('change', this._mobileHandler);
     }
 
     if (this.amplitudeRafId != null) {
@@ -262,7 +293,7 @@ export default {
       this.amplitudeRafId = requestAnimationFrame(loop);
     },
   },
-  components: { Sphere, GlassPanel, DataList, Starfield, ParticleCanvas },
+  components: { Sphere, GlassPanel, DataList, Starfield, ParticleCanvas, MobileDrawer },
 };
 </script>
 
@@ -281,6 +312,13 @@ export default {
   .main-area {
     gap: 24px;
     padding: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-area {
+    flex-direction: column;
+    padding-bottom: 60px; /* space for collapsed drawer */
   }
 }
 </style>
