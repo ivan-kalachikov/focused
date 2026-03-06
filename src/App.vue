@@ -35,8 +35,8 @@ export default {
   --grid-line: #111111;
   --grid-line-dim: #080808;
   --text-primary: #00FF41;
-  --text-dim: #00802080;
-  --text-muted: #1A3A1F;
+  --text-dim: #00AA30C0;
+  --text-muted: #2D5A35;
   --accent: #00FF41;
   --accent-glow: #00FF4133;
   --error: #FF3333;
