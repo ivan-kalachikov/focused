@@ -190,8 +190,14 @@ export default {
     this._mobileQuery.addEventListener('change', this._mobileHandler);
 
     this.startAmplitudeLoop();
+
+    this._keydownHandler = this.handleKeydown.bind(this);
+    window.addEventListener('keydown', this._keydownHandler);
   },
   beforeUnmount() {
+    if (this._keydownHandler) {
+      window.removeEventListener('keydown', this._keydownHandler);
+    }
     if (this.musicAudio) this.musicAudio.disconnect();
     if (this.airportAudio) this.airportAudio.disconnect();
 
@@ -221,6 +227,33 @@ export default {
       'setCurrentMusicId',
       'setMusicVolume',
     ]),
+    handleKeydown(e) {
+      if (e.target.tagName === 'INPUT') {
+        if (e.key === 'Escape') {
+          e.target.blur();
+          e.target.value = '';
+        }
+        return;
+      }
+      switch (e.key) {
+        case ' ':
+          e.preventDefault();
+          this.toggleAppStatus();
+          break;
+        case '[':
+          this.setMusicVolume(Math.max(0, this.musicVolume - 0.1));
+          break;
+        case ']':
+          this.setMusicVolume(Math.min(1, this.musicVolume + 0.1));
+          break;
+        case '{':
+          this.setAirportVolume(Math.max(0, this.airportVolume - 0.1));
+          break;
+        case '}':
+          this.setAirportVolume(Math.min(1, this.airportVolume + 0.1));
+          break;
+      }
+    },
     toggleAppStatus() {
       const newStatus = this.appStatus === 'playing' ? 'paused' : 'playing';
       this.setAppStatus(newStatus);
