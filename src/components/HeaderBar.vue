@@ -1,7 +1,7 @@
 <template>
   <header class="header-bar">
     <div class="header-bar__left">
-      <span class="header-bar__logo-placeholder">█</span>
+      <span class="header-bar__logo-placeholder" :class="{ 'header-bar__logo-placeholder--blink': appStatus === 'playing' }">█</span>
       <span class="header-bar__title">FOCUSED</span>
     </div>
     <div class="header-bar__right">
@@ -74,5 +74,14 @@ export default {
   font-weight: 400;
   color: var(--text-dim);
   letter-spacing: 0.08em;
+}
+
+.header-bar__logo-placeholder--blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 </style>

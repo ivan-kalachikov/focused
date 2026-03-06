@@ -3,40 +3,42 @@
     <div class="status-bar__items">
       <span :class="connectionClass">{{ connectionText }}</span>
       <span class="status-bar__separator">·</span>
-      <span>AAC 32kbps</span>
+      <span>{{ t('ui.statusFormat') }}</span>
       <span class="status-bar__separator">·</span>
       <span>{{ t('ui.statusUptime') }} {{ uptime }}</span>
       <span class="status-bar__separator">·</span>
       <span class="status-bar__version" @click="showAbout = !showAbout">
-        FOCUSED v0.2.0
+        FOCUSED v{{ version }}
       </span>
     </div>
-    <div v-if="showAbout" class="status-bar__about">
-      <p>{{ t('ui.aboutText') }}</p>
-      <p>
-        {{ t('ui.frontendBy') }}
-        <a href="https://github.com/Ivankalachikov/" target="_blank" rel="noopener">
-          {{ t('authors.kalachikov') }}
-        </a>
-      </p>
-      <p>
-        {{ t('ui.designBy') }}
-        <a href="https://www.behance.net/tatiana_emelyanova" target="_blank" rel="noopener">
-          {{ t('authors.emelyanova') }}
-        </a>
-      </p>
-      <p>
-        {{ t('ui.inspiredBy') }}
-        <a href="https://listentothe.cloud" target="_blank" rel="noopener">listentothe.cloud</a>
-      </p>
-      <p>
-        {{ t('ui.thanksTo') }}
-        <a href="https://somafm.com" target="_blank" rel="noopener">somafm.com</a>
-        {{ t('ui.forMusic') }},
-        <a href="https://www.liveatc.net" target="_blank" rel="noopener">liveatc.net</a>
-        {{ t('ui.forDispatcherTalks') }}
-      </p>
-    </div>
+    <transition name="slide-up">
+      <div v-if="showAbout" class="status-bar__about">
+        <p>{{ t('ui.aboutText') }}</p>
+        <p>
+          {{ t('ui.frontendBy') }}
+          <a href="https://github.com/Ivankalachikov/" target="_blank" rel="noopener">
+            {{ t('authors.kalachikov') }}
+          </a>
+        </p>
+        <p>
+          {{ t('ui.designBy') }}
+          <a href="https://www.behance.net/tatiana_emelyanova" target="_blank" rel="noopener">
+            {{ t('authors.emelyanova') }}
+          </a>
+        </p>
+        <p>
+          {{ t('ui.inspiredBy') }}
+          <a href="https://listentothe.cloud" target="_blank" rel="noopener">listentothe.cloud</a>
+        </p>
+        <p>
+          {{ t('ui.thanksTo') }}
+          <a href="https://somafm.com" target="_blank" rel="noopener">somafm.com</a>
+          {{ t('ui.forMusic') }},
+          <a href="https://www.liveatc.net" target="_blank" rel="noopener">liveatc.net</a>
+          {{ t('ui.forDispatcherTalks') }}
+        </p>
+      </div>
+    </transition>
   </footer>
 </template>
 
@@ -56,6 +58,7 @@ export default {
       startTime: null,
       uptime: '00:00:00',
       uptimeInterval: null,
+      version: '0.2.0',
     };
   },
   computed: {
@@ -65,17 +68,23 @@ export default {
       airportStatus: (state) => state.airports.status,
     }),
     connectionText() {
-      if (this.appStatus === 'paused') return 'OFFLINE';
-      if (this.musicStatus === 'pending' || this.airportStatus === 'pending') return 'BUFFERING';
-      if (this.musicStatus === 'failed' && this.airportStatus === 'failed') return 'DISCONNECTED';
-      return 'CONNECTED';
+      if (this.appStatus === 'paused') return this.t('ui.statusOffline');
+      if (this.musicStatus === 'pending' || this.airportStatus === 'pending') return this.t('ui.statusBuffering');
+      if (this.musicStatus === 'failed' && this.airportStatus === 'failed') return this.t('ui.statusDisconnected');
+      return this.t('ui.statusConnected');
+    },
+    connectionStatus() {
+      if (this.appStatus === 'paused') return 'offline';
+      if (this.musicStatus === 'pending' || this.airportStatus === 'pending') return 'buffering';
+      if (this.musicStatus === 'failed' && this.airportStatus === 'failed') return 'disconnected';
+      return 'connected';
     },
     connectionClass() {
       return {
         'status-bar__connection': true,
-        'status-bar__connection--ok': this.connectionText === 'CONNECTED',
-        'status-bar__connection--warn': this.connectionText === 'BUFFERING',
-        'status-bar__connection--off': this.connectionText === 'OFFLINE' || this.connectionText === 'DISCONNECTED',
+        'status-bar__connection--ok': this.connectionStatus === 'connected',
+        'status-bar__connection--warn': this.connectionStatus === 'buffering',
+        'status-bar__connection--off': this.connectionStatus === 'offline' || this.connectionStatus === 'disconnected',
       };
     },
   },
@@ -106,6 +115,7 @@ export default {
 <style>
 .status-bar {
   grid-area: statusbar;
+  min-height: 32px;
   padding: 6px var(--cell-padding);
   font-size: 11px;
   font-weight: 400;
@@ -156,8 +166,18 @@ export default {
 
 .status-bar__about p {
   margin: 0 0 4px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-dim);
   text-transform: none;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(8px);
+  opacity: 0;
 }
 </style>

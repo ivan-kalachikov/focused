@@ -99,6 +99,11 @@ export default {
   color: var(--warning);
 }
 
+.status-word--buffering .status-word__text::after {
+  content: '';
+  animation: dots 1.2s step-end infinite;
+}
+
 .status-word--error .status-word__text,
 .status-word--error .status-word__cursor {
   color: var(--error);
@@ -109,13 +114,20 @@ export default {
   50% { opacity: 0; }
 }
 
+@keyframes dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+}
+
 @keyframes typewriter {
   from { max-width: 0; }
-  to { max-width: 100vw; }
+  to { max-width: 20ch; }
 }
 
 .status-word--error .status-word__text {
-  animation: glitch 0.3s ease-in-out infinite;
+  animation: typewriter 0.4s steps(12) forwards, glitch 0.3s ease-in-out 0.4s infinite;
 }
 
 @keyframes glitch {
