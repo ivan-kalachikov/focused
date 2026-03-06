@@ -1,10 +1,10 @@
 <template>
-  <div class="drawer" :class="{ 'drawer--collapsed': collapsed }">
+  <div class="drawer" :class="{ 'drawer--collapsed': collapsed }" role="region" aria-label="Audio controls">
     <div
       class="drawer__handle"
       @click="onHandleClick"
       @touchstart="onTouchStart"
-      @touchmove="onTouchMove"
+      @touchmove.prevent
       @touchend="onTouchEnd"
     >
       <div class="drawer__handle-bar" />
@@ -12,26 +12,30 @@
 
     <div class="drawer__tabs" role="tablist">
       <button
+        id="tab-atc"
         class="drawer__tab"
         :class="{ 'drawer__tab--active': activeTab === 'atc' }"
         role="tab"
         :aria-selected="activeTab === 'atc'"
+        aria-controls="drawer-panel"
         @click="activeTab = 'atc'"
       >
         ATC
       </button>
       <button
+        id="tab-music"
         class="drawer__tab"
         :class="{ 'drawer__tab--active': activeTab === 'music' }"
         role="tab"
         :aria-selected="activeTab === 'music'"
+        aria-controls="drawer-panel"
         @click="activeTab = 'music'"
       >
         MUSIC
       </button>
     </div>
 
-    <div class="drawer__content" role="tabpanel">
+    <div class="drawer__content" id="drawer-panel" role="tabpanel" :aria-labelledby="activeTab === 'atc' ? 'tab-atc' : 'tab-music'">
       <DataList
         v-if="activeTab === 'atc'"
         :items="airportItems"
@@ -111,9 +115,6 @@ export default {
   methods: {
     onTouchStart(e) {
       this.touchStartY = e.touches[0].clientY;
-    },
-    onTouchMove(e) {
-      e.preventDefault();
     },
     onTouchEnd(e) {
       const delta = e.changedTouches[0].clientY - this.touchStartY;
