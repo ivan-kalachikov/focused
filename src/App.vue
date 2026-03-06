@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <HeaderBar />
     <Main />
     <Footer />
     <transition name="fade">
@@ -12,12 +13,14 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import HeaderBar from './components/HeaderBar.vue';
 import Main from './components/Main.vue';
 import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
+    HeaderBar,
     Main,
     Footer,
   },
