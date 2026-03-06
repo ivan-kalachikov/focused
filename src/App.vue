@@ -1,11 +1,6 @@
 <template>
   <div class="layout">
-    <HeaderBar />
-    <div style="grid-area: status; padding: var(--cell-padding);">STATUS</div>
-    <div style="grid-area: visualizer; padding: var(--cell-padding);">VISUALIZER</div>
-    <div style="grid-area: airports; padding: var(--cell-padding);">AIRPORTS</div>
-    <div style="grid-area: music; padding: var(--cell-padding);">MUSIC</div>
-    <div style="grid-area: statusbar; padding: var(--cell-padding);">STATUSBAR</div>
+    <Main />
     <transition name="fade">
       <div v-if="toast" :class="['toast', `toast--${toast.type}`]">
         {{ toast.message }}
@@ -16,11 +11,11 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
-import HeaderBar from './components/HeaderBar.vue';
+import Main from './components/Main.vue';
 
 export default {
   name: 'App',
-  components: { HeaderBar },
+  components: { Main },
   computed: mapState(['toast']),
   watch: {
     toast(val) {
