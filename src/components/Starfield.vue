@@ -25,6 +25,7 @@ export default {
       reducedMotion: false,
       canvasWidth: 0,
       canvasHeight: 0,
+      ctx: null,
     };
   },
   mounted() {
@@ -67,8 +68,8 @@ export default {
       this.canvasWidth = width;
       this.canvasHeight = height;
 
-      const ctx = canvas.getContext('2d');
-      ctx.scale(dpr, dpr);
+      this.ctx = canvas.getContext('2d');
+      this.ctx.scale(dpr, dpr);
     },
     generateStars() {
       const isMobile = window.innerWidth < 768;
@@ -115,12 +116,12 @@ export default {
       this.rafId = requestAnimationFrame(loop);
     },
     renderFrame(time) {
-      const canvas = this.$refs.canvas;
-      if (!canvas) return;
+      const ctx = this.ctx;
+      if (!ctx) return;
 
-      const ctx = canvas.getContext('2d');
       const width = this.canvasWidth;
       const height = this.canvasHeight;
+      if (width === 0 || height === 0) return;
 
       ctx.clearRect(0, 0, width, height);
 

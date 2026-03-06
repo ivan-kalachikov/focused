@@ -19,7 +19,12 @@ let sharedContext = null;
 
 function getAudioContext() {
   if (!sharedContext) {
-    sharedContext = new (window.AudioContext || window.webkitAudioContext)();
+    try {
+      sharedContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+      console.warn('useAudioAnalyser: Web Audio API unavailable', e);
+      return null;
+    }
   }
   return sharedContext;
 }
@@ -53,7 +58,11 @@ export function useAudioAnalyser() {
   function connect(audioElement) {
     if (!audioElement) return;
 
+    // Clean up any previous connection before rewiring
+    disconnect();
+
     const ctx = getAudioContext();
+    if (!ctx) return;
 
     // Resume context if suspended (browser autoplay policy)
     if (ctx.state === 'suspended') {
@@ -72,8 +81,11 @@ export function useAudioAnalyser() {
     analyser = ctx.createAnalyser();
     analyser.fftSize = 256;
 
+    // Disconnect source from any previous outputs before rewiring
+    source.disconnect();
+
     // Wire the audio graph: source → analyser → destination
-    // The source→destination path keeps audio audible in speakers.
+    // Routing through the analyser keeps audio audible in speakers.
     source.connect(analyser);
     analyser.connect(ctx.destination);
 
