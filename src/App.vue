@@ -32,8 +32,8 @@ export default {
 :root {
   --bg: #000000;
   --surface: #0A0A0A;
-  --grid-line: #111111;
-  --grid-line-dim: #080808;
+  --grid-line: #1A2A1C;
+  --grid-line-dim: #0F170F;
   --text-primary: #00FF41;
   --text-dim: #00CC38DD;
   --text-muted: #3A7A45;
