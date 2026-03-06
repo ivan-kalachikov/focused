@@ -1,7 +1,11 @@
 <template>
   <div class="layout">
-    <Main />
-    <Footer />
+    <div style="grid-area: header; padding: var(--cell-padding);">HEADER</div>
+    <div style="grid-area: status; padding: var(--cell-padding);">STATUS</div>
+    <div style="grid-area: visualizer; padding: var(--cell-padding);">VISUALIZER</div>
+    <div style="grid-area: airports; padding: var(--cell-padding);">AIRPORTS</div>
+    <div style="grid-area: music; padding: var(--cell-padding);">MUSIC</div>
+    <div style="grid-area: statusbar; padding: var(--cell-padding);">STATUSBAR</div>
     <transition name="fade">
       <div v-if="toast" :class="['toast', `toast--${toast.type}`]">
         {{ toast.message }}
@@ -12,15 +16,9 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
-import Main from './components/Main.vue';
-import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
-  components: {
-    Main,
-    Footer,
-  },
   computed: mapState(['toast']),
   watch: {
     toast(val) {
@@ -34,7 +32,22 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  --bg: #000000;
+  --surface: #0A0A0A;
+  --grid-line: #111111;
+  --grid-line-dim: #080808;
+  --text-primary: #00FF41;
+  --text-dim: #00802080;
+  --text-muted: #1A3A1F;
+  --accent: #00FF41;
+  --accent-glow: #00FF4133;
+  --error: #FF3333;
+  --warning: #FFB000;
+  --white: #CCCCCC;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+  --cell-padding: 12px;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -44,148 +57,125 @@ export default {
 
 html, body {
   height: 100%;
-  background: #191921;
+  background: var(--bg);
 }
 
 #app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #dadada;
+  color: var(--text-primary);
+  font-size: 14px;
+  letter-spacing: 0.02em;
   height: 100%;
 }
 
 a {
-  color: #bbb;
+  color: var(--white);
   text-decoration: none;
 }
-
 a:hover, a:active {
-  color: #eee;
+  color: var(--text-primary);
 }
 
 .layout {
-  min-height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   position: relative;
-  background: #191921;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "header    header"
+    "status    visualizer"
+    "airports  music"
+    "statusbar statusbar";
+  gap: 1px;
+  background: var(--grid-line);
 }
 
-/* Shared layout utilities */
-.row {
-  display: flex;
-  flex-wrap: wrap;
+.layout > * {
+  background: var(--bg);
 }
 
-.justify-center {
-  justify-content: center;
+.layout::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
 }
 
-/* Shared card styles */
-.card-col {
-  width: 100%;
-  max-width: 360px;
-}
-
-.card {
-  background: #23242B;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-/* Text utilities */
-.text-secondary {
-  color: #888;
-}
-
-/* Shared slider styles */
-.slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 6px;
-  background: #393744;
-  border-radius: 3px;
+*:focus-visible {
   outline: none;
-  margin-top: 4px;
+  text-shadow: 0 0 8px var(--accent-glow);
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  background: #3949D3;
-  border-radius: 50%;
-  cursor: pointer;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .layout::after {
+    display: none;
+  }
 }
 
-.slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  background: #3949D3;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
+@media (max-width: 767px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "status"
+      "visualizer"
+      "airports"
+      "music"
+      "statusbar";
+  }
+  :root {
+    --cell-padding: 8px;
+  }
 }
 
-.slider:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@media (pointer: coarse) {
+  .layout {
+    --touch-min-height: 44px;
+  }
 }
 
-/* Shared icon wrapper */
-.icon-wrapper {
-  position: relative;
-  flex-shrink: 0;
-  width: 40px;
-}
-
-.icon-wrapper.error path {
-  fill: #6f2b39;
-}
-
-.icon-wrapper.error circle {
-  stroke: #6f2b39;
-}
-
-.spinner {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-}
-
-/* Toast notifications */
 .toast {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 24px;
-  border-radius: 6px;
-  color: #dadada;
-  font-size: 14px;
-  z-index: 1000;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+  z-index: 10000;
 }
 
 .toast--error {
-  background: #5E2551;
-  border: 1px solid #6f2b39;
+  border-color: var(--error);
+  color: var(--error);
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
