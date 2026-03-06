@@ -3,7 +3,13 @@
   <audio ref="airportPlayer" @error="airportErrorHandler" @play="airportPlayHandler" :src="currentAirportUrl" crossorigin="anonymous" />
 
   <main class="main-area">
-    <Starfield />
+    <Starfield :musicAmplitude="musicAmplitude" :airportAmplitude="airportAmplitude" />
+    <ParticleCanvas
+      :musicAnalyser="musicAudio"
+      :airportAnalyser="airportAudio"
+      :sphereRect="sphereRect"
+      :isPlaying="appStatus === 'playing'"
+    />
 
     <GlassPanel tilt="left" :ghostText="currentAirportCode" accent-color="--accent-cool">
       <DataList
@@ -49,17 +55,29 @@
 import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
 import { safePause, safePlay, safeLoad } from '../utilites';
+import { useAudioAnalyser } from '../composables/useAudioAnalyser';
 import Sphere from './Sphere.vue';
 import GlassPanel from './GlassPanel.vue';
 import DataList from './DataList.vue';
 import Starfield from './Starfield.vue';
+import ParticleCanvas from './ParticleCanvas.vue';
 
 export default {
   name: 'Main',
   setup() {
     const { t } = useI18n();
     return {
-      t, safePause, safePlay, safeLoad,
+      t, safePause, safePlay, safeLoad, useAudioAnalyser,
+    };
+  },
+  data() {
+    return {
+      musicAudio: null,
+      airportAudio: null,
+      sphereRect: null,
+      musicAmplitude: 0,
+      airportAmplitude: 0,
+      amplitudeRafId: null,
     };
   },
   computed: {
@@ -91,6 +109,7 @@ export default {
     appStatus(newVal) {
       if (newVal === 'playing') {
         this.play();
+        this.connectAnalysers();
       }
       if (newVal === 'paused') {
         this.pause();
@@ -126,6 +145,29 @@ export default {
     musicVolume(newVal) {
       if (this.$refs.musicPlayer) this.$refs.musicPlayer.volume = newVal;
     },
+  },
+  mounted() {
+    this.musicAudio = this.useAudioAnalyser();
+    this.airportAudio = this.useAudioAnalyser();
+
+    this.updateSphereRect();
+    this._resizeHandler = () => this.updateSphereRect();
+    window.addEventListener('resize', this._resizeHandler);
+
+    this.startAmplitudeLoop();
+  },
+  beforeUnmount() {
+    if (this.musicAudio) this.musicAudio.disconnect();
+    if (this.airportAudio) this.airportAudio.disconnect();
+
+    if (this._resizeHandler) {
+      window.removeEventListener('resize', this._resizeHandler);
+    }
+
+    if (this.amplitudeRafId != null) {
+      cancelAnimationFrame(this.amplitudeRafId);
+      this.amplitudeRafId = null;
+    }
   },
   methods: {
     ...mapMutations([
@@ -180,8 +222,43 @@ export default {
         this.$refs.airportPlayer.play();
       }
     },
+    connectAnalysers() {
+      if (this.musicAudio && this.$refs.musicPlayer) {
+        this.musicAudio.connect(this.$refs.musicPlayer);
+      }
+      if (this.airportAudio && this.$refs.airportPlayer) {
+        this.airportAudio.connect(this.$refs.airportPlayer);
+      }
+    },
+    updateSphereRect() {
+      this.$nextTick(() => {
+        const sphereEl = this.$el?.querySelector('.sphere');
+        const mainEl = this.$el?.querySelector('.main-area') || this.$el;
+        if (!sphereEl || !mainEl) return;
+
+        const sphereBounds = sphereEl.getBoundingClientRect();
+        const mainBounds = mainEl.getBoundingClientRect();
+
+        this.sphereRect = {
+          x: sphereBounds.left - mainBounds.left,
+          y: sphereBounds.top - mainBounds.top,
+          width: sphereBounds.width,
+          height: sphereBounds.height,
+        };
+      });
+    },
+    startAmplitudeLoop() {
+      const loop = () => {
+        if (!document.hidden) {
+          this.musicAmplitude = this.musicAudio ? this.musicAudio.getAmplitude() : 0;
+          this.airportAmplitude = this.airportAudio ? this.airportAudio.getAmplitude() : 0;
+        }
+        this.amplitudeRafId = requestAnimationFrame(loop);
+      };
+      this.amplitudeRafId = requestAnimationFrame(loop);
+    },
   },
-  components: { Sphere, GlassPanel, DataList, Starfield },
+  components: { Sphere, GlassPanel, DataList, Starfield, ParticleCanvas },
 };
 </script>
 
