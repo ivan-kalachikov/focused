@@ -112,11 +112,11 @@ a:hover, a:active {
 
 @keyframes crt-flicker {
   0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(0.97); }
+  50% { filter: brightness(0.98); }
   85% { filter: brightness(1); }
-  86% { filter: brightness(0.6); }
-  87% { filter: brightness(0.9); }
-  88% { filter: brightness(0.65); }
+  86% { filter: brightness(0.8); }
+  87% { filter: brightness(0.95); }
+  88% { filter: brightness(0.82); }
   89% { filter: brightness(1); }
 }
 
