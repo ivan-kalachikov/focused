@@ -32,8 +32,8 @@ export default {
 :root {
   --bg: #000000;
   --surface: #0A0A0A;
-  --grid-line: #1A2A1C;
-  --grid-line-dim: #0F170F;
+  --grid-line: #254A2C;
+  --grid-line-dim: #142018;
   --text-primary: #00FF41;
   --text-dim: #00CC38DD;
   --text-muted: #3A7A45;
@@ -86,12 +86,11 @@ a:hover, a:active {
     "status    visualizer"
     "airports  music"
     "statusbar statusbar";
-  gap: 1px;
-  background: var(--grid-line);
+  gap: 0;
 }
 
 .layout > * {
-  background: var(--bg);
+  outline: 1px dotted var(--grid-line);
 }
 
 .layout::after {
