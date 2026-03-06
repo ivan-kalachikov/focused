@@ -95,33 +95,35 @@ export default {
 }
 
 .data-list__header {
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--grid-line);
-  margin: 0 calc(-1 * var(--cell-padding)) 4px;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px dotted var(--grid-line);
+  margin-left: calc(-1 * var(--cell-padding));
+  margin-right: calc(-1 * var(--cell-padding));
   padding-left: var(--cell-padding);
   padding-right: var(--cell-padding);
 }
 
 .data-list__label {
-  font-size: 11px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-dim);
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
 }
 
 .data-list__search {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px var(--cell-padding);
-  margin: 0 calc(-1 * var(--cell-padding));
-  border-bottom: 1px solid var(--grid-line);
+  gap: 6px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  border: 1px solid var(--grid-line-dim);
 }
 
 .data-list__prompt {
   font-size: 14px;
-  color: var(--text-dim);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
@@ -132,13 +134,13 @@ export default {
   outline: none;
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.02em;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 .data-list__search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--text-dim);
 }
 
 .data-list__scroll {
