@@ -92,5 +92,6 @@ export default {
   font-size: 11px;
   color: var(--text-dim);
   letter-spacing: 0.1em;
+  padding-right: 8px;
 }
 </style>
