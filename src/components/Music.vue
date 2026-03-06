@@ -1,94 +1,97 @@
 <template>
-  <div class="card-col">
-    <div class="card">
-      <div class="card-header">
-        <div :class="['icon-wrapper', musicStatus === 'failed' && 'error']">
-          <Spinner v-if="musicStatus === 'pending' && appStatus === 'playing'" class="spinner" />
-          <musicIcon />
-        </div>
-        <CustomSelect
-          :options="music"
-          :model-value="currentMusicId"
-          value-key="id"
-          label-key="name"
-          filter-key="name"
-          :placeholder="t('ui.selectMusic')"
-          @update:model-value="handleChange"
-        >
-          <template #option="{ option }">
-            <img :src="option.imageUrl" width="40" height="40" :alt="option.name" />
-            <span :title="option.description">{{ option.name }}</span>
-          </template>
-        </CustomSelect>
+  <DataList
+    class="music-list"
+    :items="musicArray"
+    value-key="id"
+    label-key="name"
+    filter-key="name"
+    :model-value="currentMusicId"
+    :volume="musicVolume"
+    :label="t('ui.musicFeed')"
+    :volume-aria-label="t('ui.musicVolume')"
+    @update:model-value="setCurrentMusicId"
+    @update:volume="setMusicVolume"
+  >
+    <template #row="{ item, active }">
+      <div class="music-list__info">
+        <span class="music-list__name">{{ item.name }}</span>
+        <span v-if="active" class="music-list__desc">{{ item.description }}</span>
       </div>
-      <input
-        type="range"
-        class="slider"
-        min="0"
-        max="100"
-        value="100"
-        @input="handleVolumeChange(Number($event.target.value))"
-        :disabled="musicStatus === 'failed'"
-      />
-    </div>
-  </div>
+    </template>
+  </DataList>
 </template>
 
 <script>
-import { useI18n } from 'vue-i18n';
 import { mapState, mapMutations } from 'vuex';
-import musicIcon from '../assets/music.svg';
-import Spinner from '../assets/tail-spin.svg';
-import CustomSelect from './CustomSelect.vue';
+import { useI18n } from 'vue-i18n';
+import DataList from './DataList.vue';
 
 export default {
   name: 'Music',
+  components: { DataList },
+  props: ['audio'],
   setup() {
     const { t } = useI18n();
     return { t };
   },
-  props: ['audio'],
-  beforeUpdate() {
-    this.audio.addEventListener('waiting', this.setPending);
-    this.audio.addEventListener('emptied', this.setPending);
-    this.audio.addEventListener('loadeddata', this.setReady);
+  computed: {
+    ...mapState({
+      music: (state) => state.music.list,
+      musicVolume: (state) => state.music.volume,
+      currentMusicId: (state) => state.music.currentId,
+      musicStatus: (state) => state.music.status,
+      appStatus: (state) => state.appStatus,
+    }),
+    // music is an array in store, ensure it's iterable
+    musicArray() {
+      return Array.isArray(this.music) ? this.music : Object.values(this.music);
+    },
   },
-  beforeUnmount() {
-    this.audio.removeEventListener('waiting', this.setPending);
-    this.audio.removeEventListener('emptied', this.setPending);
-    this.audio.removeEventListener('loadeddata', this.setReady);
-  },
-  computed: mapState({
-    music: (state) => state.music.list,
-    musicStatus: (state) => state.music.status,
-    musicVolume: (state) => state.music.volume,
-    currentMusicId: (state) => state.music.currentId,
-    appStatus: (state) => state.appStatus,
-  }),
   watch: {
     musicVolume(newVal) {
-      this.audio.volume = newVal;
+      if (this.audio) this.audio.volume = newVal;
     },
+  },
+  beforeUpdate() {
+    if (this.audio) {
+      this.audio.addEventListener('waiting', this.setPending);
+      this.audio.addEventListener('emptied', this.setPending);
+      this.audio.addEventListener('loadeddata', this.setReady);
+    }
+  },
+  beforeUnmount() {
+    if (this.audio) {
+      this.audio.removeEventListener('waiting', this.setPending);
+      this.audio.removeEventListener('emptied', this.setPending);
+      this.audio.removeEventListener('loadeddata', this.setReady);
+    }
   },
   methods: {
     ...mapMutations(['setCurrentMusicId', 'setMusicStatus', 'setMusicVolume']),
-    handleChange(id) {
-      this.setCurrentMusicId(id);
-    },
-    handleVolumeChange(value) {
-      this.setMusicVolume(value / 100);
-    },
-    setPending() {
-      this.setMusicStatus('pending');
-    },
-    setReady() {
-      this.setMusicStatus('ready');
-    },
-  },
-  components: {
-    musicIcon,
-    Spinner,
-    CustomSelect,
+    setPending() { this.setMusicStatus('pending'); },
+    setReady() { this.setMusicStatus('ready'); },
   },
 };
 </script>
+
+<style>
+.music-list {
+  grid-area: music;
+}
+
+.music-list__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.music-list__name {
+  font-size: 14px;
+}
+
+.music-list__desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+</style>
