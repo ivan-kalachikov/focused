@@ -97,16 +97,40 @@ export default {
       this.atcAnalyser.connect(this.$refs.airportPlayer);
       this.musicAnalyser.connect(this.$refs.musicPlayer);
     });
+    window.addEventListener('keydown', this.handleGlobalKey);
   },
   beforeUnmount() {
     this.atcAnalyser.disconnect();
     this.musicAnalyser.disconnect();
+    window.removeEventListener('keydown', this.handleGlobalKey);
   },
   methods: {
     ...mapMutations([
       'setAppStatus', 'setAirportError', 'setAirportStatus',
       'setMusicError', 'setMusicStatus', 'showToast',
+      'setMusicVolume', 'setAirportVolume',
     ]),
+    handleGlobalKey(e) {
+      if (e.target.tagName === 'INPUT') return;
+      switch (e.key) {
+        case ' ':
+          e.preventDefault();
+          this.toggleAppStatus();
+          break;
+        case '[':
+          this.setMusicVolume(Math.max(0, this.$store.state.music.volume - 0.1));
+          break;
+        case ']':
+          this.setMusicVolume(Math.min(1, this.$store.state.music.volume + 0.1));
+          break;
+        case '{':
+          this.setAirportVolume(Math.max(0, this.$store.state.airports.volume - 0.1));
+          break;
+        case '}':
+          this.setAirportVolume(Math.min(1, this.$store.state.airports.volume + 0.1));
+          break;
+      }
+    },
     toggleAppStatus() {
       this.setAppStatus(this.appStatus === 'playing' ? 'paused' : 'playing');
     },
