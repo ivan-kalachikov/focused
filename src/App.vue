@@ -1,7 +1,6 @@
 <template>
   <div class="layout">
     <Main />
-    <Footer />
     <transition name="fade">
       <div v-if="toast" :class="['toast', `toast--${toast.type}`]">
         {{ toast.message }}
@@ -13,14 +12,10 @@
 <script>
 import { mapState, mapMutations } from 'vuex';
 import Main from './components/Main.vue';
-import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
-  components: {
-    Main,
-    Footer,
-  },
+  components: { Main },
   computed: mapState(['toast']),
   watch: {
     toast(val) {
@@ -34,7 +29,22 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  --bg: #000000;
+  --surface: #0A0A0A;
+  --grid-line: #254A2C;
+  --grid-line-dim: #142018;
+  --text-primary: #00FF41;
+  --text-dim: #00CC38DD;
+  --text-muted: #3A7A45;
+  --accent: #00FF41;
+  --accent-glow: #00FF4133;
+  --error: #FF3333;
+  --warning: #FFB000;
+  --white: #CCCCCC;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+  --cell-padding: 12px;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -44,148 +54,172 @@ export default {
 
 html, body {
   height: 100%;
-  background: #191921;
+  background: var(--bg);
 }
 
 #app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #dadada;
+  color: var(--text-primary);
+  font-size: 16px;
+  letter-spacing: 0.02em;
   height: 100%;
 }
 
 a {
-  color: #bbb;
+  color: var(--white);
   text-decoration: none;
 }
-
 a:hover, a:active {
-  color: #eee;
+  color: var(--text-primary);
 }
 
 .layout {
-  min-height: 100%;
+  height: 100vh;
   overflow: hidden;
   position: relative;
-  background: #191921;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "header    header"
+    "status    visualizer"
+    "airports  music"
+    "statusbar statusbar";
+  gap: 0;
 }
 
-/* Shared layout utilities */
-.row {
-  display: flex;
-  flex-wrap: wrap;
+.layout > * {
+  outline: 1px dotted var(--grid-line);
 }
 
-.justify-center {
-  justify-content: center;
+/* CRT scan-line overlay */
+.layout::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.35) 3px,
+    rgba(0, 0, 0, 0.35) 6px
+  );
 }
 
-/* Shared card styles */
-.card-col {
-  width: 100%;
-  max-width: 360px;
+/* CRT screen depth — vignette on each panel */
+.status-word,
+.oscilloscope,
+.airports-list,
+.music-list {
+  box-shadow: inset 0 0 80px 20px rgba(0, 255, 65, 0.18);
 }
 
-.card {
-  background: #23242B;
-  border-radius: 8px;
-  padding: 16px;
+/* Independent CRT flicker per panel — prime-ish durations so they never sync */
+.status-word    { animation: crt-flicker-a 7s  ease-in-out infinite; }
+.oscilloscope   { animation: crt-flicker-b 5s  ease-in-out infinite; }
+.airports-list  { animation: crt-flicker-c 11s ease-in-out infinite; }
+.music-list     { animation: crt-flicker-d 8s  ease-in-out infinite; }
+
+@keyframes crt-flicker-a {
+  0%, 100% { filter: brightness(1); }
+  86% { filter: brightness(0.82); }
+  87% { filter: brightness(0.95); }
+  88% { filter: brightness(0.84); }
+  89% { filter: brightness(1); }
+}
+@keyframes crt-flicker-b {
+  0%, 100% { filter: brightness(1); }
+  72% { filter: brightness(0.8); }
+  73% { filter: brightness(0.92); }
+  74% { filter: brightness(0.85); }
+  75% { filter: brightness(1); }
+}
+@keyframes crt-flicker-c {
+  0%, 100% { filter: brightness(1); }
+  91% { filter: brightness(0.84); }
+  92% { filter: brightness(0.96); }
+  93% { filter: brightness(0.8); }
+  94% { filter: brightness(1); }
+}
+@keyframes crt-flicker-d {
+  0%, 100% { filter: brightness(1); }
+  62% { filter: brightness(0.82); }
+  63% { filter: brightness(0.94); }
+  64% { filter: brightness(0.86); }
+  65% { filter: brightness(1); }
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-/* Text utilities */
-.text-secondary {
-  color: #888;
-}
-
-/* Shared slider styles */
-.slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 6px;
-  background: #393744;
-  border-radius: 3px;
+*:focus-visible {
   outline: none;
-  margin-top: 4px;
+  text-shadow: 0 0 8px var(--accent-glow);
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  background: #3949D3;
-  border-radius: 50%;
-  cursor: pointer;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .layout::after {
+    display: none;
+  }
 }
 
-.slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  background: #3949D3;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
+@media (max-width: 767px) {
+  .layout {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "status"
+      "visualizer"
+      "airports"
+      "music"
+      "statusbar";
+  }
+  :root {
+    --cell-padding: 8px;
+  }
 }
 
-.slider:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@media (pointer: coarse) {
+  .layout {
+    --touch-min-height: 44px;
+  }
 }
 
-/* Shared icon wrapper */
-.icon-wrapper {
-  position: relative;
-  flex-shrink: 0;
-  width: 40px;
-}
-
-.icon-wrapper.error path {
-  fill: #6f2b39;
-}
-
-.icon-wrapper.error circle {
-  stroke: #6f2b39;
-}
-
-.spinner {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-}
-
-/* Toast notifications */
 .toast {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 24px;
-  border-radius: 6px;
-  color: #dadada;
-  font-size: 14px;
-  z-index: 1000;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+  z-index: 10000;
 }
 
 .toast--error {
-  background: #5E2551;
-  border: 1px solid #6f2b39;
+  border-color: var(--error);
+  color: var(--error);
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s;
 }
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
